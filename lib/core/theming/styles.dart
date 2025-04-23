@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/core/theming/colors.dart';
+import 'package:news_app/core/theming/font_weight_helper.dart';
+
+class TextStyles {
+  static TextStyle font24BlackBold = GoogleFonts.poppins(
+    fontSize: 24.sp,
+    fontWeight: FontWeighthelper.bold,
+    color: ColorsManager.black,
+  );
+  static TextStyle font16PurpleGrayregular = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.purpleGray,
+  );
+  static TextStyle font16primarywhiteColorSemiBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.primarywhiteColor,
+  );
+  static TextStyle font16LightBlueSemiBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.lightBlue,
+  );
+}
