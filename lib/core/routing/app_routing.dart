@@ -1,0 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:news_app/core/routing/routes.dart';
+import 'package:news_app/features/onboarding/onboarding_screen.dart';
+
+class AppRouting {
+  Route? generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.onboarding:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+
+      default:
+        return null;
+    }
+  }
+}

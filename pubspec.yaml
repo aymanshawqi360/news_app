@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.8
    # for splash screen
   flutter_native_splash: ^2.4.0
+  flutter_screenutil: ^5.9.3
+  # fonts.google
+  google_fonts: ^6.2.1
+  # scroll Paeges
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
