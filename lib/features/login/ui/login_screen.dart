@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/core/helpers/app_assets.dart';
+import 'package:news_app/core/helpers/extensions.dart';
 import 'package:news_app/core/helpers/spacing.dart';
+import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/core/widget/app_text_form_field.dart';
@@ -126,6 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           log("message");
+                          //  context.pushNamed(Routes.signUp);
                         }
                       },
                       child: Container(
@@ -164,10 +167,14 @@ class _LoginScreenState extends State<LoginScreen> {
               verticalSpace(16),
               Center(
                 child: AppTextRich(
-                    textOne: "don’t have an account ?",
-                    textTwo: " Sign Up",
-                    styleOne: TextStyles.font14PurpleGrayRegular,
-                    styleTwo: TextStyles.font14BlueSemiBold),
+                  textOne: "don’t have an account ?",
+                  textTwo: " Sign Up",
+                  styleOne: TextStyles.font14PurpleGrayRegular,
+                  styleTwo: TextStyles.font14BlueSemiBold,
+                  onTapTextTwo: () {
+                    context.pushReplacementNamed(Routes.signUp);
+                  },
+                ),
               )
             ],
           ),
