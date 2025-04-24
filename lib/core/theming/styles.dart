@@ -30,6 +30,11 @@ class TextStyles {
     fontWeight: FontWeighthelper.bold,
     color: ColorsManager.darkGray,
   );
+  static TextStyle font48BlueGrayBold = GoogleFonts.poppins(
+    fontSize: 48.sp,
+    fontWeight: FontWeighthelper.bold,
+    color: ColorsManager.blue,
+  );
   static TextStyle font48BuleBold = GoogleFonts.poppins(
     fontSize: 48.sp,
     fontWeight: FontWeighthelper.bold,
