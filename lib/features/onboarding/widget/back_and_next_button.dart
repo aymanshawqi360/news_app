@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/core/helpers/extensions.dart';
 import 'package:news_app/core/helpers/spacing.dart';
+import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
 
@@ -50,8 +52,11 @@ class _BackAndNextButtonState extends State<BackAndNextButton> {
               horizontalSpace(13),
               GestureDetector(
                 onTap: () {
-                  if (widget.page < 2) widget.page++;
+                  if (widget.page < 3) widget.page++;
                   widget.controller.animateToPage(widget.page);
+                  if (widget.page == 3) {
+                    context.pushNamed(Routes.login);
+                  }
                   setState(() {});
                 },
                 child: Container(
