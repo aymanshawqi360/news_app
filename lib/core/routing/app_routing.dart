@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/routing/routes.dart';
+import 'package:news_app/features/login/ui/login_screen.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
 
 class AppRouting {
@@ -7,7 +8,8 @@ class AppRouting {
     switch (settings.name) {
       case Routes.onboarding:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
-
+      case Routes.login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       default:
         return null;
     }

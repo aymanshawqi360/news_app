@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:news_app/core/theming/styles.dart';
+
+class AppTextRich extends StatelessWidget {
+  final String textOne;
+  final String textTwo;
+  final TextStyle styleOne;
+  final TextStyle styleTwo;
+
+  const AppTextRich(
+      {super.key,
+      required this.textOne,
+      required this.textTwo,
+      required this.styleOne,
+      required this.styleTwo});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(text: textOne, style: styleOne),
+          TextSpan(text: textTwo, style: styleTwo),
+        ],
+      ),
+    );
+  }
+}

@@ -25,4 +25,45 @@ class TextStyles {
     fontWeight: FontWeighthelper.semiBold,
     color: ColorsManager.lightBlue,
   );
+  static TextStyle font48DarkGrayBold = GoogleFonts.poppins(
+    fontSize: 48.sp,
+    fontWeight: FontWeighthelper.bold,
+    color: ColorsManager.darkGray,
+  );
+  static TextStyle font48BuleBold = GoogleFonts.poppins(
+    fontSize: 48.sp,
+    fontWeight: FontWeighthelper.bold,
+    color: ColorsManager.blue,
+  );
+  static TextStyle font20PurpleGrayRegular = GoogleFonts.poppins(
+    fontSize: 20.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.purpleGray,
+  );
+  static TextStyle font14PurpleGrayRegular = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.purpleGray,
+  );
+  static TextStyle font14LightBlueRegular = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.lightBlue,
+  );
+  static TextStyle font14WhiteSemiBold = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.primarywhiteColor,
+  );
+
+  static TextStyle font16GreydarkSemiBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.greydark,
+  );
+  static TextStyle font14BlueSemiBold = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.blue,
+  );
 }

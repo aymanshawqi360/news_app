@@ -1,3 +1,9 @@
+List<String> images = [
+  AppAssets().onboardingScreenOne,
+  AppAssets().onboardingScreenThree,
+  AppAssets().onboardingScreenTwo,
+];
+
 class AppAssets {
   AppAssets._();
   static final AppAssets _instance = AppAssets._();
@@ -5,10 +11,6 @@ class AppAssets {
   String onboardingScreenOne = "assets/images/onboarding_screen_one.png";
   String onboardingScreenTwo = "assets/images/onboarding_screen_two.png";
   String onboardingScreenThree = "assets/images/onboarding_screen_three.png";
-   
+  String iconFaceBook = "assets/svgs/icon_facebook.svg";
+  String iconGoogle = "assets/svgs/icon_google.svg";
 }
-List<String> images = [
-    AppAssets().onboardingScreenOne,
-    AppAssets().onboardingScreenThree,
-    AppAssets().onboardingScreenTwo,
-  ];
