@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/helpers/extensions.dart';
+import 'package:news_app/core/notworking/firebase_factory.dart';
+import 'package:news_app/core/routing/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,8 +10,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HomeScreen"),
-        backgroundColor: Colors.amber,
+        actions: [
+          GestureDetector(
+              onTap: () {
+                FirebaseFactory().firebaseAuth!.signOut();
+                // FirebaseFactory.instance.firebaseAuth!.signOut();
+                context.pushNamedAndRemoveUntil(Routes.login,
+                    predicate: (v) => false);
+              },
+              child: const Icon(Icons.output))
+        ],
       ),
       body: Center(child: Center(child: Text("HomeScreen"))),
     );

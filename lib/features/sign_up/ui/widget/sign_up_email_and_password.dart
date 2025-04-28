@@ -8,16 +8,16 @@ import 'package:news_app/core/widget/app_text_form_field.dart';
 import 'package:news_app/core/widget/app_text_rich.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
 
-class EmailAndPassword extends StatefulWidget {
-  const EmailAndPassword({
+class SignUpEmailAndPassword extends StatefulWidget {
+  const SignUpEmailAndPassword({
     super.key,
   });
 
   @override
-  State<EmailAndPassword> createState() => _EmailAndPasswordState();
+  State<SignUpEmailAndPassword> createState() => _SignUpEmailAndPasswordState();
 }
 
-class _EmailAndPasswordState extends State<EmailAndPassword> {
+class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
   @override
   Widget build(BuildContext context) {
     return Form(

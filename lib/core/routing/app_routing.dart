@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/di/dependency_injection.dart';
 import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/features/home/home_screen.dart';
+import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/ui/login_screen.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
@@ -14,7 +15,11 @@ class AppRouting {
       case Routes.onboarding:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<LoginCubit>(),
+                  child: const LoginScreen(),
+                ));
       case Routes.signUp:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news_app/core/helpers/app_assets.dart';
 import 'package:news_app/core/helpers/spacing.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';

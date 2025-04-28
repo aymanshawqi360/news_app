@@ -10,7 +10,7 @@ import 'package:news_app/core/widget/app_text_button.dart';
 import 'package:news_app/core/widget/app_text_rich.dart';
 import 'package:news_app/features/login/ui/widget/social_media.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
-import 'package:news_app/features/sign_up/ui/widget/email_and_password.dart';
+import 'package:news_app/features/sign_up/ui/widget/sign_up_email_and_password.dart';
 import 'package:news_app/features/sign_up/ui/widget/signup_bloc_listener.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -21,10 +21,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +48,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: TextStyles.font20PurpleGrayRegular,
                 ),
                 verticalSpace(65),
-                const EmailAndPassword(),
+                const SignUpEmailAndPassword(),
                 verticalSpace(16),
                 AppTextButton(
                   onTap: () {
-                    validateThenDoLogin(context);
+                    validateThenDoSignup(context);
                   },
                 ),
                 verticalSpace(16),
@@ -91,7 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void validateThenDoLogin(BuildContext context) {
+  void validateThenDoSignup(BuildContext context) {
     if (context.read<SignUpCubit>().formKey.currentState!.validate()) {
       context.read<SignUpCubit>().signUp();
     }
