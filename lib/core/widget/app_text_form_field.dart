@@ -23,14 +23,14 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: false,
+      // autofocus: false,
       obscureText: obscure ?? false,
       controller: controller,
       decoration: InputDecoration(
         filled: true,
         fillColor: ColorsManager.primarywhiteColor,
         contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-        suffixIcon: suffixIcon ?? const Icon(Icons.visibility_outlined),
+        suffixIcon: suffixIcon,
         border: OutlineInputBorder(
           borderRadius: radius ?? BorderRadius.circular(6.r),
           borderSide:
