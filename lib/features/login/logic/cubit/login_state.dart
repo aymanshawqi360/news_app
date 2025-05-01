@@ -65,3 +65,15 @@ class LoginLoadingSignInWithGoogleDelete extends LoginState {}
 class LoginSuccessSignInWithGoogleDelete extends LoginState {}
 
 class LoginFailureSignInWithGoogleDelete extends LoginState {}
+
+//loginWithFacebook
+//
+class LoginSuccessWithFacebook extends LoginState {}
+
+class LoginLoadingWithFacebook extends LoginState {}
+
+class LoginFailureWithFacebook extends LoginState {
+  final FirebaseErrorModel? error;
+
+  LoginFailureWithFacebook({required this.error});
+}

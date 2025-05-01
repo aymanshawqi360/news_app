@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
 
                 // GoogleSignIn googleSignIn = GoogleSignIn();
                 FirebaseFactory().googleSignIn!.disconnect();
-                // FirebaseFactory().facebookAuth!.logOut();
+                FirebaseFactory().facebookAuth!.logOut();
 
                 // googleSignIn.disconnect();
 

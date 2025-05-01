@@ -22,4 +22,11 @@ class SignupFirebaseService {
 
     return response;
   }
+
+  Future<UserCredential> signUpWithFacebook(AuthCredential credential) async {
+    UserCredential instance =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+
+    return instance;
+  }
 }

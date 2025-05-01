@@ -91,4 +91,48 @@ class LoginFirebaseRepo {
       return ApiResult.failure(FirebaseErrorHandler.handle(e));
     }
   }
+
+  Future<ApiResult<String>> loginWithFacebook() async {
+    //
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+      if (loginResult.accessToken == null) {
+        return ApiResult.failure(FirebaseErrorModel(
+            error: '⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)'));
+      }
+
+      // final response = await _loginFirebaseServies
+      //     .loginWithFacebook(loginResult.accessToken!.tokenString);
+
+      // Trigger the sign-in flow
+      // final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      // Create a credential from the access token
+      // final OAuthCredential facebookAuthCredential =
+      //     FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+
+      // Once signed in, return the UserCredential
+      // final response = await FirebaseAuth.instance
+      //     .signInWithCredential(facebookAuthCredential);
+
+      // final response = await _loginFirebaseServies.loginWithFacebook();
+      // final OAuthCredential facebookAuthCredential =
+      //     FacebookAuthProvider.credential(response.accessToken!.tokenString);
+
+      // Once signed in, return the UserCredential
+      // final ddd = await FirebaseAuth.instance
+      //     .signInWithCredential(facebookAuthCredential);
+
+      // final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+      final response =
+          await _loginFirebaseServies.loginWithFacebook(facebookAuthCredential);
+
+      return ApiResult.success(response.toString());
+    } catch (e) {
+      return ApiResult.failure(FirebaseErrorHandler.handle(e));
+    }
+  }
 }

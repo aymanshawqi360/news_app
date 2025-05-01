@@ -36,4 +36,12 @@ class LoginFirebaseServies {
     final response = _firebaseFactory.googleSignIn;
     return response;
   }
+
+  Future<UserCredential> loginWithFacebook(AuthCredential credential) async {
+    //
+    UserCredential instance =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+
+    return instance;
+  }
 }
