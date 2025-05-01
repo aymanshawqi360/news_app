@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -88,8 +87,7 @@ class FirebaseErrorHandler {
             message.contains('7:') ||
             details == '7') {
           return FirebaseErrorModel(
-            error:
-                '⚠️ لا يمكن العثور على عنوان الخادم (تحقق من اتصال الإنترنت واسم النطاق)',
+            error: '⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)',
           );
         } else if (details == '8') {
           return FirebaseErrorModel(
@@ -115,92 +113,37 @@ class FirebaseErrorHandler {
           return FirebaseErrorModel(
             error: '⚠️ فشل مؤقت في تحليل اسم النطاق (DNS)',
           );
+        } else if (details == 'ERROR_NETWORK_REQUEST_FAILED' || code.isEmpty) {
+          return FirebaseErrorModel(
+            error: '⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)',
+          );
         }
-
-        // switch (code) {
-        //   case (code == 'network_error' || message.contains('7:') || details == '7'):
-        //     return FirebaseErrorModel(
-        //       error: '⚠️ لا يمكن العثور على عنوان الخادم (تحقق من اتصال الإنترنت واسم النطاق)',
-        //     );
-
-        //   case (details == '8'):
-        //     return FirebaseErrorModel(
-        //       error: '⚠️ اسم الخدمة غير معروف (مشكلة DNS)',
-        //     );
-
-        //   case (details == '101'):
-        //     return FirebaseErrorModel(
-        //       error: '🚫 الشبكة غير متاحة (لا يوجد اتصال Wi-Fi أو بيانات)',
-        //     );
-
-        //   case (details == '110'):
-        //     return FirebaseErrorModel(
-        //       error: '⏳ مهلة الاتصال انتهت (الخادم لم يستجب)',
-        //     );
-
-        //   case (details == '111'):
-        //     return FirebaseErrorModel(
-        //       error: '❌ الخادم رفض الاتصال (قد يكون غير متاح)',
-        //     );
-
-        //   case (details == '113'):
-        //     return FirebaseErrorModel(
-        //       error: '🚫 لا يوجد طريق للوصول إلى الخادم (مشاكل في الشبكة)',
-        //     );
-
-        //   case (details == '-2'):
-        //     return FirebaseErrorModel(
-        //       error: '⚠️ فشل مؤقت في تحليل اسم النطاق (DNS)',
-        //     );
-
-        //   default:
-        //     return FirebaseErrorModel(
-        //       error: '❗ خطأ غير معروف في الشبكة. رمز الخطأ: $code',
-        //     );
-        // }
       }
-      ;
-
-      // if (e is PlatformException) {
-
-      //   // final error = e.osError?.errorCode;
-      //   // final message = e.osError?.message ?? e.message;
-      //   switch (e.details) {
-      //     case '7':
-      //       return FirebaseErrorModel(
-      //           error:
-      //               '⚠️ لا يمكن العثور على عنوان الخادم (تحقق من اسم النطاق)');
-
-      //     case '8':
-      //       return FirebaseErrorModel(
-      //           error: '⚠️ اسم الخدمة غير معروف (مشكلة DNS)');
-
-      //     case '101':
-      //       return FirebaseErrorModel(
-      //           error: '🚫 الشبكة غير متاحة (لا يوجد اتصال Wi-Fi أو بيانات)');
-
-      //     case '110':
-      //       return FirebaseErrorModel(
-      //           error: '⏳ مهلة الاتصال انتهت (الخادم لم يستجب)');
-
-      //     case '111':
-      //       return FirebaseErrorModel(
-      //           error: '❌ الخادم رفض الاتصال (قد يكون غير متاح)');
-
-      //     case '113':
-      //       return FirebaseErrorModel(
-      //           error: '🚫 لا يوجد طريق للوصول إلى الخادم (مشاكل في الشبكة)');
-      //     case '-2':
-      //       return FirebaseErrorModel(
-      //           error: '⚠️ فشل مؤقت في تحليل اسم النطاق (DNS)');
-      //     case 'network_error':
-      //       return FirebaseErrorModel(
-      //           error: 'فشل الاتصال بالشبكة. الرجاء التحقق من الإنترنت.');
-
-      //     default:
-      //       return FirebaseErrorModel(error: '❗ خطأ في الشبكة:  (رمز الخطأ: )');
-      //   }
-      // }
+    } else if (e == 'permission_denied') {
+      return FirebaseErrorModel(
+        error: '❌ تم رفض إذن الوصول إلى حساب Facebook',
+      );
+    } else if (e == 'login_failed') {
+      return FirebaseErrorModel(
+        error: '🚫 فشل تسجيل الدخول عبر Facebook (تحقق من إعدادات التطبيق)',
+      );
+    } else if (e == 'app_not_set_up') {
+      return FirebaseErrorModel(
+        error: '⚠️ لم يتم إعداد التطبيق على Facebook Developer Console',
+      );
+    } else if (e == 'invalid_key_hash') {
+      return FirebaseErrorModel(
+        error:
+            '❌ المفتاح غير صحيح (تأكد من إضافة key hash الصحيح في إعدادات Facebook)',
+      );
+    } else if (e == 'access_denied') {
+      return FirebaseErrorModel(
+        error: '🚫 تم رفض الوصول إلى حساب Facebook',
+      );
+    } else {
+      return FirebaseErrorModel(
+        error: '💥 حدث استثناء غير معروف: ${e.toString()}',
+      );
     }
 
     log(e.toString());
