@@ -89,4 +89,20 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginFailureSignInWithGoogleDelete());
     }
   }
+
+  loginWithFacebook() async {
+    //
+    log("LoginLoadingWithFacebook");
+    emit(LoginLoadingWithFacebook());
+    final response = await _loginRepo.loginWithFacebook();
+    if (response is Success<String>) {
+      log("LoginSuccessWithFacebook");
+
+      emit(LoginSuccessWithFacebook());
+    } else if (response is Failure<String>) {
+      log("LoginFailureWithFacebook=========2");
+      emit(LoginFailureWithFacebook(
+          error: FirebaseErrorModel(error: response.error.error.toString())));
+    }
+  }
 }

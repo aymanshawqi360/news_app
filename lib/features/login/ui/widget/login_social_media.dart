@@ -22,7 +22,10 @@ class LoginSocialMedia extends StatelessWidget {
       listenWhen: (previous, current) =>
           current is LoginSuccessSignInWithGoogle ||
           current is LoginFailureSignInWithGoogle ||
-          current is LoginLoadingSignInWithGoogle,
+          current is LoginLoadingSignInWithGoogle ||
+          current is LoginLoadingWithFacebook ||
+          current is LoginSuccessWithFacebook ||
+          current is LoginFailureWithFacebook,
       listener: (context, state) {
         if (state is LoginLoadingSignInWithGoogle) {}
         if (state is LoginFailureSignInWithGoogle) {
@@ -31,10 +34,23 @@ class LoginSocialMedia extends StatelessWidget {
         if (state is LoginSuccessSignInWithGoogle) {
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
         }
+        if (state is LoginLoadingWithFacebook) {}
+        if (state is LoginSuccessWithFacebook) {
+          context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
+        }
+        if (state is LoginFailureWithFacebook) {
+          //
+          _textShowDialog(context, state.error!.error.toString());
+        }
       },
       child: Row(
         children: [
-          AppSocialMedia(name: "Facebook", image: AppAssets().iconFaceBook),
+          GestureDetector(
+              onTap: () {
+                context.read<LoginCubit>().loginWithFacebook();
+              },
+              child: AppSocialMedia(
+                  name: "Facebook", image: AppAssets().iconFaceBook)),
           horizontalSpace(31),
           GestureDetector(
               onTap: () {

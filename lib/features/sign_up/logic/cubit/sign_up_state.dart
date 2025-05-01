@@ -28,3 +28,15 @@ class SignUpWithGoogleFailure extends SignUpState {
 
   SignUpWithGoogleFailure({required this.error});
 }
+
+//loginWithFacebook
+
+class SignUpSuccessWithFacebook extends SignUpState {}
+
+class SignUpLoadingWithFacebook extends SignUpState {}
+
+class SignUpFailureWithFacebook extends SignUpState {
+  final FirebaseErrorModel? error;
+
+  SignUpFailureWithFacebook({required this.error});
+}

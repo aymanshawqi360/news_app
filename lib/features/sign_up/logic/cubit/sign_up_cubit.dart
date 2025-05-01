@@ -39,4 +39,19 @@ class SignUpCubit extends Cubit<SignUpState> {
           error: FirebaseErrorModel(error: response.error.error.toString())));
     }
   }
+
+  signUpWithFacebook() async {
+    // log("LoginLoadingWithFacebook=========");
+    emit(SignUpLoadingWithFacebook());
+    final response = await _signupFirebaseRepo.signUpWithFacebook();
+    if (response is Success<String>) {
+      // log("LoginSuccessWithFacebook=========");
+
+      emit(SignUpSuccessWithFacebook());
+    } else if (response is Failure<String>) {
+      // log("LoginFailureWithFacebook=========");
+      emit(SignUpFailureWithFacebook(
+          error: FirebaseErrorModel(error: response.error.error.toString())));
+    }
+  }
 }

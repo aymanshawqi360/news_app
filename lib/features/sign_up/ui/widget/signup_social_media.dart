@@ -19,7 +19,10 @@ class SignupSocialMedia extends StatelessWidget {
       listenWhen: (previous, current) =>
           current is SignUpWithGoogleFailure ||
           current is SignUpWithGoogleLoading ||
-          current is SignUpWithGoogleSuccess,
+          current is SignUpWithGoogleSuccess ||
+          current is SignUpLoadingWithFacebook ||
+          current is SignUpFailureWithFacebook ||
+          current is SignUpSuccessWithFacebook,
       listener: (context, state) {
         if (state is SignUpWithGoogleLoading) {
         } else if (state is SignUpWithGoogleFailure) {
@@ -27,12 +30,22 @@ class SignupSocialMedia extends StatelessWidget {
         } else if (state is SignUpWithGoogleSuccess) {
           // _textShowDialog(context, state.successFull.toString());
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
+        } else if (state is SignUpLoadingWithFacebook) {
+        } else if (state is SignUpFailureWithFacebook) {
+          _textShowDialog(context, state.error!.error.toString());
+        } else if (state is SignUpSuccessWithFacebook) {
+          context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
         }
       },
       builder: (context, state) {
         return Row(
           children: [
-            AppSocialMedia(name: "Facebook", image: AppAssets().iconFaceBook),
+            GestureDetector(
+                onTap: () {
+                  context.read<SignUpCubit>().signUpWithFacebook();
+                },
+                child: AppSocialMedia(
+                    name: "Facebook", image: AppAssets().iconFaceBook)),
             horizontalSpace(31),
             GestureDetector(
                 onTap: () {
