@@ -20,6 +20,7 @@ class LoginBlocListene extends StatelessWidget {
           current is LoginFailure,
       listener: (context, state) {
         if (state is LoginLoading) {}
+
         if (state is LoginSuccess) {
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
         }

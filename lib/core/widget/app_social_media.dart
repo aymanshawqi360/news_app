@@ -5,10 +5,10 @@ import 'package:news_app/core/helpers/spacing.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
 
-class SocialMedia extends StatelessWidget {
+class AppSocialMedia extends StatelessWidget {
   final String name;
   final String image;
-  const SocialMedia({super.key, required this.name, required this.image});
+  const AppSocialMedia({super.key, required this.name, required this.image});
 
   @override
   Widget build(BuildContext context) {

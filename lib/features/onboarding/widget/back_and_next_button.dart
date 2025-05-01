@@ -55,7 +55,8 @@ class _BackAndNextButtonState extends State<BackAndNextButton> {
                   if (widget.page < 3) widget.page++;
                   widget.controller.animateToPage(widget.page);
                   if (widget.page == 3) {
-                    context.pushNamed(Routes.login);
+                    context.pushNamedAndRemoveUntil(Routes.login,
+                        predicate: (v) => false);
                   }
                   setState(() {});
                 },

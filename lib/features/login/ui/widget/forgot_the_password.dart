@@ -17,7 +17,7 @@ class ForgotThepassword extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
           current is LoginSuccessForgotThepassword ||
-          current is LoginSSSSSS ||
+          current is LoginForgotthepassword ||
           current is LoginFailureForgotThepassword ||
           current is LoginLoadingForgotThepassword,
       listener: (context, state) {
@@ -25,7 +25,7 @@ class ForgotThepassword extends StatelessWidget {
         if (state is LoginSuccessForgotThepassword) {
           _textShowDialog(context, state.successforgotThepassword.toString());
         }
-        if (state is LoginSSSSSS) {
+        if (state is LoginForgotthepassword) {
           _textShowDialog(context, state.error.toString());
         }
         if (state is LoginFailureForgotThepassword) {
@@ -37,29 +37,36 @@ class ForgotThepassword extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  height: 24.h,
-                  width: 24.w,
-                  child: Checkbox(
-                    tristate: true,
-                    activeColor: ColorsManager.blue,
-                    value: true,
-                    onChanged: (vlaue) {},
-                    semanticLabel: "dsdsd",
+            Padding(
+              padding: EdgeInsets.only(top: 0.h, right: 15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 18,
+                    height: MediaQuery.of(context).size.height / 28,
+                    child: Checkbox(
+                      tristate: true,
+                      activeColor: ColorsManager.blue,
+                      value: true,
+                      onChanged: (vlaue) {},
+                      semanticLabel: "dsdsd",
+                    ),
                   ),
-                ),
-                horizontalSpace(4),
-                Text("Remember me ", style: TextStyles.font14PurpleGrayRegular)
-              ],
+                  horizontalSpace(4),
+                  Text(
+                    "Remember me ",
+                    style: TextStyles.font12PurpleGrayRegular,
+                  )
+                ],
+              ),
             ),
             GestureDetector(
               onTap: () {
                 context.read<LoginCubit>().forgotThepassword();
               },
               child: Text("Forgot the password ?",
-                  style: TextStyles.font14LightBlueRegular),
+                  style: TextStyles.font12LightBlueRegular),
             ),
           ],
         );

@@ -13,3 +13,18 @@ class SignUpFailure extends SignUpState {
 
   SignUpFailure({required this.error});
 }
+
+//SignUpWithGoogle
+class SignUpWithGoogleLoading extends SignUpState {}
+
+class SignUpWithGoogleSuccess extends SignUpState {
+  final String? successFull;
+
+  SignUpWithGoogleSuccess({required this.successFull});
+}
+
+class SignUpWithGoogleFailure extends SignUpState {
+  final FirebaseErrorModel? error;
+
+  SignUpWithGoogleFailure({required this.error});
+}
