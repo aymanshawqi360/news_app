@@ -1,6 +1,10 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:news_app/core/notworking/api_result.dart';
 import 'package:news_app/core/notworking/firebase_error_model.dart';
 import 'package:news_app/features/login/data/model/login_request_body.dart';
@@ -38,7 +42,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   forgotThepassword() async {
     if (emilController.text.isEmpty) {
-      emit(LoginSSSSSS(
+      emit(LoginForgotthepassword(
           error:
               "الرجاء كتابةالبريدالاكتروني ثم قم forgot the password بضعط على"));
       return;
@@ -55,6 +59,34 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginFailureForgotThepassword(
           failureforgotThepassword:
               FirebaseErrorModel(error: response.error.error.toString())));
+    }
+  }
+
+  signInWithGoogle() async {
+    log("LoginLoadingSignInWithGoogle==================");
+    emit(LoginLoadingSignInWithGoogle());
+
+    final response = await _loginRepo.signInWithGoogle();
+
+    if (response is Success<String>) {
+      log("LoginSuccessSignInWithGoogle==================");
+      emit(LoginSuccessSignInWithGoogle(
+          isSignInGoogle: response.data.toString()));
+    } else if (response is Failure<String>) {
+      log("LoginFailureSignInWithGoogle==================");
+      emit(LoginFailureSignInWithGoogle(
+          error: FirebaseErrorModel(error: response.error.error.toString())));
+    }
+  }
+
+  signInWithGoogleDelete() async {
+    emit(LoginLoadingSignInWithGoogleDelete());
+    final response = await _loginRepo.signInWithGoogleDelete();
+
+    if (response is Success<GoogleSignInAccount>) {
+      emit(LoginSuccessSignInWithGoogleDelete());
+    } else if (response is Failure<GoogleSignInAccount>) {
+      emit(LoginFailureSignInWithGoogleDelete());
     }
   }
 }

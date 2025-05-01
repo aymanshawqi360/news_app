@@ -15,4 +15,11 @@ class SignupFirebaseService {
 
     return response;
   }
+
+  Future<UserCredential> signInWithGoogle(AuthCredential credential) async {
+    final response =
+        await _firebaseFactory.firebaseAuth!.signInWithCredential(credential);
+
+    return response;
+  }
 }

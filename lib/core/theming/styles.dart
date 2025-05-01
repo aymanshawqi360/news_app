@@ -50,8 +50,13 @@ class TextStyles {
     fontWeight: FontWeighthelper.regular,
     color: ColorsManager.purpleGray,
   );
-  static TextStyle font14LightBlueRegular = GoogleFonts.poppins(
-    fontSize: 14.sp,
+  static TextStyle font12PurpleGrayRegular = GoogleFonts.poppins(
+    fontSize: 12.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.purpleGray,
+  );
+  static TextStyle font12LightBlueRegular = GoogleFonts.poppins(
+    fontSize: 12.sp,
     fontWeight: FontWeighthelper.regular,
     color: ColorsManager.lightBlue,
   );

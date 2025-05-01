@@ -12,34 +12,30 @@ class AppTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
-      builder: (context, state) {
-        return GestureDetector(
-          onTap: onTap,
-          child: Container(
-            width: double.infinity,
-            height: 50.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.r),
-              color: ColorsManager.blue,
-            ),
-            child: Center(
-                child: state is LoginLoading
-                    ? SizedBox(
-                        width: 23.w,
-                        height: 23.h,
-                        child: const CircularProgressIndicator(
-                          strokeWidth: 4,
-                          color: ColorsManager.primarywhiteColor,
-                        ),
-                      )
-                    : Text(
-                        "Login",
-                        style: TextStyles.font14WhiteSemiBold,
-                      )),
-          ),
-        );
-      },
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        height: 50.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6.r),
+          color: ColorsManager.blue,
+        ),
+        child: Center(
+            child:
+                // ? SizedBox(
+                //     width: 25.w,
+                //     height: 25.h,
+                //     child: const CircularProgressIndicator(
+                //       strokeWidth: 5,
+                //       color: ColorsManager.primarywhiteColor,
+                //     ),
+                //   )
+                Text(
+          "Login",
+          style: TextStyles.font14WhiteSemiBold,
+        )),
+      ),
     );
   }
 }

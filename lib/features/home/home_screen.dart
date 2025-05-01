@@ -14,7 +14,13 @@ class HomeScreen extends StatelessWidget {
           GestureDetector(
               onTap: () {
                 FirebaseFactory().firebaseAuth!.signOut();
-                // FirebaseFactory.instance.firebaseAuth!.signOut();
+
+                // GoogleSignIn googleSignIn = GoogleSignIn();
+                FirebaseFactory().googleSignIn!.disconnect();
+                // FirebaseFactory().facebookAuth!.logOut();
+
+                // googleSignIn.disconnect();
+
                 context.pushNamedAndRemoveUntil(Routes.login,
                     predicate: (v) => false);
               },

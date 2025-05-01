@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/helpers/spacing.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
@@ -62,15 +61,15 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
             },
             suffixIcon: const Icon(Icons.visibility_outlined),
           ),
-          verticalSpace(10),
+          // verticalSpace(10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   SizedBox(
-                    height: 24.h,
-                    width: 24.w,
+                    width: MediaQuery.of(context).size.width / 18,
+                    height: MediaQuery.of(context).size.height / 28,
                     child: Checkbox(
                       tristate: true,
                       activeColor: ColorsManager.blue,
@@ -81,7 +80,7 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
                   ),
                   horizontalSpace(4),
                   Text("Remember me ",
-                      style: TextStyles.font14PurpleGrayRegular)
+                      style: TextStyles.font12PurpleGrayRegular)
                 ],
               ),
             ],

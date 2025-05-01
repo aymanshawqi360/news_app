@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_app/core/notworking/firebase_error_model.dart';
 
 abstract class LoginState {}
 
 class LoginInitial extends LoginState {}
 
+///Login
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
@@ -17,6 +19,7 @@ class LoginFailure extends LoginState {
   LoginFailure({required this.error});
 }
 
+///ForgotThepassword
 class LoginSuccessForgotThepassword extends LoginState {
   final String successforgotThepassword;
 
@@ -35,8 +38,30 @@ class LoginLoadingForgotThepassword extends LoginState {
   // LoginLoadingForgotThepassword({required this.errorPassword});
 }
 
-class LoginSSSSSS extends LoginState {
+class LoginForgotthepassword extends LoginState {
   final String error;
 
-  LoginSSSSSS({required this.error});
+  LoginForgotthepassword({required this.error});
 }
+
+///SignInWithGoogle
+class LoginLoadingSignInWithGoogle extends LoginState {}
+
+class LoginSuccessSignInWithGoogle extends LoginState {
+  final dynamic isSignInGoogle;
+
+  LoginSuccessSignInWithGoogle({required this.isSignInGoogle});
+}
+
+class LoginFailureSignInWithGoogle extends LoginState {
+  final FirebaseErrorModel? error;
+
+  LoginFailureSignInWithGoogle({required this.error});
+}
+
+///signInWithGoogleDelete
+class LoginLoadingSignInWithGoogleDelete extends LoginState {}
+
+class LoginSuccessSignInWithGoogleDelete extends LoginState {}
+
+class LoginFailureSignInWithGoogleDelete extends LoginState {}

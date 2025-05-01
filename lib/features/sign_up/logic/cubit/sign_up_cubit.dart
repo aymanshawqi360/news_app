@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/notworking/api_result.dart';
@@ -23,8 +21,21 @@ class SignUpCubit extends Cubit<SignUpState> {
     if (response is Success<String>) {
       emit(SignUpSuccess());
     } else if (response is Failure<String>) {
-      //   log(FirebaseErrorModel(error: response.error.error).toString());
       emit(SignUpFailure(
+          error: FirebaseErrorModel(error: response.error.error.toString())));
+    }
+  }
+
+  signInWithGoogle() async {
+    debugPrint("SignUpWithGoodleLoading===================");
+    emit(SignUpWithGoogleLoading());
+    final response = await _signupFirebaseRepo.signInWithGoogle();
+    if (response is Success<String>) {
+      debugPrint("SignUpWithGoodleSuccess===================");
+      emit(SignUpWithGoogleSuccess(successFull: response.data.toString()));
+    } else if (response is Failure<String>) {
+      debugPrint("SignUpWithGoodleFailure===================");
+      emit(SignUpWithGoogleFailure(
           error: FirebaseErrorModel(error: response.error.error.toString())));
     }
   }

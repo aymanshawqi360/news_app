@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/core/helpers/app_assets.dart';
 import 'package:news_app/core/helpers/extensions.dart';
 import 'package:news_app/core/helpers/spacing.dart';
 import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/styles.dart';
-import 'package:news_app/core/widget/app_text_button.dart';
 import 'package:news_app/core/widget/app_text_rich.dart';
-import 'package:news_app/features/login/ui/widget/social_media.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
 import 'package:news_app/features/sign_up/ui/widget/sign_up_email_and_password.dart';
 import 'package:news_app/features/sign_up/ui/widget/signup_bloc_listener.dart';
+import 'package:news_app/features/sign_up/ui/widget/signup_social_media.dart';
+import 'package:news_app/features/sign_up/ui/widget/signup_text_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -21,11 +20,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 verticalSpace(65),
                 const SignUpEmailAndPassword(),
                 verticalSpace(16),
-                AppTextButton(
+                SignUpTextButton(
                   onTap: () {
                     validateThenDoSignup(context);
                   },
@@ -63,19 +57,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 verticalSpace(16),
-                Row(
-                  children: [
-                    SocialMedia(
-                        name: "Facebook", image: AppAssets().iconFaceBook),
-                    horizontalSpace(31),
-                    SocialMedia(name: "Google", image: AppAssets().iconGoogle),
-                  ],
-                ),
+                const SignupSocialMedia(),
                 verticalSpace(16),
                 Center(
                   child: AppTextRich(
                       textOne: "Already have an account ?",
-                      textTwo: " Logins",
+                      textTwo: " Login",
                       styleOne: TextStyles.font14PurpleGrayRegular,
                       styleTwo: TextStyles.font14BlueSemiBold,
                       onTapTextTwo: () {
