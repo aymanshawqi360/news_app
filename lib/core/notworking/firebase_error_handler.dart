@@ -1,8 +1,11 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:news_app/core/notworking/firebase_error_model.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 class FirebaseErrorHandler {
   static FirebaseErrorModel handle(dynamic e) {
@@ -11,73 +14,110 @@ class FirebaseErrorHandler {
         switch (e.code) {
           case 'invalid-credential':
             return FirebaseErrorModel(
-                error: '❌ بيانات تسجيل الدخول غير صحيحة أو منتهية.');
+                error: LocaleKeys
+                        .FirebaseAuthException_TheLoginInformationIsIncorrectOrExpired
+                    .tr());
           case 'operation-not-allowed':
             return FirebaseErrorModel(
-                error:
-                    '⚙️ تسجيل الدخول باستخدام Google غير مفعل في إعدادات Firebase.');
+                error: LocaleKeys
+                        .FirebaseAuthException_SignInWithGoogleIsNotEnabledInFirebaseSettings
+                    .tr());
           case 'account-exists-with-different-credential':
             return FirebaseErrorModel(
-                error:
-                    '📌 يوجد حساب مرتبط بهذا البريد الإلكتروني باستخدام طريقة تسجيل مختلفة.');
+                error: LocaleKeys
+                        .FirebaseAuthException_AnAccountIsAlreadyAssociatedWithThisEmailUsingADifferentRegistrationMethod
+                    .tr());
           case 'invalid-email':
-            return FirebaseErrorModel(error: '📧 البريد الإلكتروني غير صالح.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_InvalidEmail.tr());
           case 'user-disabled':
-            return FirebaseErrorModel(error: '🚫 هذا المستخدم تم تعطيله.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_ThisUserHasBeenDisabled
+                    .tr());
 
           case 'user-not-found':
             return FirebaseErrorModel(
-                error: '❌ لا يوجد حساب مرتبط بهذا البريد.');
+                error: LocaleKeys
+                        .FirebaseAuthException_ThereIsNoAccountAssociatedWithThisEmail
+                    .tr());
           case 'wrong-password':
-            return FirebaseErrorModel(error: '🔑 كلمة المرور غير صحيحة.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_IncorrectPassword.tr());
           case 'email-already-in-use':
-            return FirebaseErrorModel(error: '📌 البريد مستخدم مسبقًا.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_TheMailIsalreadyInUse
+                    .tr());
           case 'weak-password':
-            return FirebaseErrorModel(error: '🔐 كلمة المرور ضعيفة جدًا.');
+            return FirebaseErrorModel(
+                error:
+                    LocaleKeys.FirebaseAuthException_ThePasswordIsTooWeak.tr());
 
           case 'too-many-requests':
             return FirebaseErrorModel(
-                error: '🚀 عدد محاولات تسجيل الدخول كبير جدًا. حاول لاحقًا.');
+                error: LocaleKeys
+                        .FirebaseAuthException_TooManyLoginAttemptsTryAgainLater
+                    .tr());
           case 'network-request-failed':
             return FirebaseErrorModel(
-                error: '🌐 تأكد من اتصال الإنترنت وحاول مرة أخرى.');
+                error: LocaleKeys
+                        .FirebaseAuthException_MakeSureYouHaveAnInternetConnectionAndTryAgain
+                    .tr());
 
           case 'invalid-verification-code':
-            return FirebaseErrorModel(error: '✉️ رمز التحقق غير صحيح.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_InvalidVerificationCode
+                    .tr());
           case 'invalid-verification-id':
             return FirebaseErrorModel(
-                error: '🆔 رمز التحقق من الهوية غير صالح.');
+                error: LocaleKeys
+                        .FirebaseAuthException_InvalidIdentityVerificationCode
+                    .tr());
 
           case 'credential-already-in-use':
             return FirebaseErrorModel(
-                error: '♻️ بيانات الاعتماد مستخدمة مسبقاً.');
+                error: LocaleKeys.FirebaseAuthException_CredentialsAlreadyInUse
+                    .tr());
           case 'requires-recent-login':
             return FirebaseErrorModel(
-                error: '🔐 يلزم تسجيل الدخول مؤخرًا للقيام بهذه العملية.');
+                error: LocaleKeys
+                        .FirebaseAuthException_YouNeedToHaveRecentlyLoggedInToDoThis
+                    .tr());
           case 'user-mismatch':
             return FirebaseErrorModel(
-                error: '👥 بيانات الاعتماد لا تتطابق مع المستخدم الحالي.');
+                error: LocaleKeys
+                        .FirebaseAuthException_CredentialsDoNotMatchTheCurrentUser
+                    .tr());
           case 'expired-action-code':
-            return FirebaseErrorModel(error: '⏰ رمز الإجراء منتهي.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_ActionCodeExpired.tr());
           case 'invalid-action-code':
-            return FirebaseErrorModel(error: '⚡ رمز الإجراء غير صالح.');
+            return FirebaseErrorModel(
+                error: LocaleKeys.FirebaseAuthException_InvalidActionCode.tr());
           case 'session-expired':
             return FirebaseErrorModel(
-                error: '⌛ انتهت صلاحية الجلسة، حاول مرة أخرى.');
+                error: LocaleKeys.FirebaseAuthException_SessionExpiredTryAgain
+                    .tr());
           case 'missing-verification-code':
-            return FirebaseErrorModel(error: '📩 لم يتم إدخال رمز التحقق.');
+            return FirebaseErrorModel(
+                error: LocaleKeys
+                    .FirebaseAuthException_VerificationCodeNotEntered.tr());
 
           case 'internal-error':
             return FirebaseErrorModel(
-                error: '💥 حدث خطأ داخلي في النظام. حاول مرة أخرى.');
+                error: LocaleKeys
+                        .FirebaseAuthException_AnInternalSystemErrorOccurredTryAgain
+                    .tr());
 
           case 'sign_in_failed':
             return FirebaseErrorModel(
-                error: '🚫 فشل تسجيل الدخول. حاول مرة أخرى.');
+                error:
+                    LocaleKeys.FirebaseAuthException_LoginFailedTryAgain.tr());
 
           default:
             return FirebaseErrorModel(
-                error: '⚠️ حدث خطأ ما. حاول مرة أخرى لاحقًا.');
+                error: LocaleKeys
+                        .FirebaseAuthException_SomethingWentWrongTryAgainLater
+                    .tr());
         }
       } else if (e is PlatformException) {
         final code = e.code;
@@ -87,59 +127,74 @@ class FirebaseErrorHandler {
             message.contains('7:') ||
             details == '7') {
           return FirebaseErrorModel(
-            error: '⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)',
-          );
+              error: LocaleKeys
+                      .PlatformException_FailedToConnectToTheServerCheckYourInternetConnection
+                  .tr());
         } else if (details == '8') {
           return FirebaseErrorModel(
-            error: '⚠️ اسم الخدمة غير معروف (مشكلة DNS)',
+            error: LocaleKeys.PlatformException_ServiceNameUnknownDNSIssue.tr(),
           );
         } else if (details == '101') {
           return FirebaseErrorModel(
-            error: '🚫 الشبكة غير متاحة (لا يوجد اتصال Wi-Fi أو بيانات)',
+            error: LocaleKeys
+                    .PlatformException_NetworkNotAvailableNoWiFiOrDataConnection
+                .tr(),
           );
         } else if (details == '110') {
           return FirebaseErrorModel(
-            error: '⏳ مهلة الاتصال انتهت (الخادم لم يستجب)',
+            error: LocaleKeys
+                .PlatformException_ConnectionTimedOutServerDidNotRespond.tr(),
           );
         } else if (details == '111') {
           return FirebaseErrorModel(
-            error: '❌ الخادم رفض الاتصال (قد يكون غير متاح)',
+            error: LocaleKeys
+                    .PlatformException_TheServerRefusedTheConnectionItMayBeUnavailable
+                .tr(),
           );
         } else if (details == '113') {
           return FirebaseErrorModel(
-            error: '🚫 لا يوجد طريق للوصول إلى الخادم (مشاكل في الشبكة)',
+            error: LocaleKeys
+                .PlatformException_NoWayToReachTheServerNetworkProblems.tr(),
           );
         } else if (details == '-2') {
           return FirebaseErrorModel(
-            error: '⚠️ فشل مؤقت في تحليل اسم النطاق (DNS)',
+            error:
+                LocaleKeys.PlatformException_TemporaryDNSResolutionFailure.tr(),
           );
         } else if (details == 'ERROR_NETWORK_REQUEST_FAILED' || code.isEmpty) {
           return FirebaseErrorModel(
-            error: '⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)',
+            error: LocaleKeys
+                    .PlatformException_FailedToConnectToTheServerCheckYourInternetConnection
+                .tr(),
           );
         }
       }
     } else if (e == 'permission_denied') {
       return FirebaseErrorModel(
-        error: '❌ تم رفض إذن الوصول إلى حساب Facebook',
+        error:
+            LocaleKeys.FirebaseErrorFacebook_FacebookAccountAccessDenied.tr(),
       );
     } else if (e == 'login_failed') {
       return FirebaseErrorModel(
-        error: '🚫 فشل تسجيل الدخول عبر Facebook (تحقق من إعدادات التطبيق)',
+        error: LocaleKeys
+            .FirebaseErrorFacebook_FacebookLoginFailedCheckAppSettings.tr(),
       );
     } else if (e == 'app_not_set_up') {
       return FirebaseErrorModel(
-        error: '⚠️ لم يتم إعداد التطبيق على Facebook Developer Console',
+        error: LocaleKeys
+                .FirebaseErrorFacebook_TheAppIsNotSetUpOnTheFacebookDeveloperConsole
+            .tr(),
       );
     } else if (e == 'invalid_key_hash') {
       return FirebaseErrorModel(
-        error:
-            '❌ المفتاح غير صحيح (تأكد من إضافة key hash الصحيح في إعدادات Facebook)',
+        error: LocaleKeys
+                .FirebaseErrorFacebook_TheKeyIsIncorrectMakeSureYouAddedTheCorrectkeyHashInYourFacebookSettings
+            .tr(),
       );
     } else if (e == 'access_denied') {
       return FirebaseErrorModel(
-        error: '🚫 تم رفض الوصول إلى حساب Facebook',
-      );
+          error: LocaleKeys.FirebaseErrorFacebook_FacebookAccountAccessDenied
+              .tr());
     } else {
       return FirebaseErrorModel(
         error: '💥 حدث استثناء غير معروف: ${e.toString()}',

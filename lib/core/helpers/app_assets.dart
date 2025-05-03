@@ -1,9 +1,3 @@
-List<String> images = [
-  AppAssets().onboardingScreenOne,
-  AppAssets().onboardingScreenThree,
-  AppAssets().onboardingScreenTwo,
-];
-
 class AppAssets {
   AppAssets._();
   static final AppAssets _instance = AppAssets._();

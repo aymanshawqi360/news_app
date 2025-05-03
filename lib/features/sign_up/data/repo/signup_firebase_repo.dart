@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -6,6 +7,8 @@ import 'package:news_app/core/notworking/firebase_error_handler.dart';
 import 'package:news_app/core/notworking/firebase_error_model.dart';
 import 'package:news_app/features/sign_up/data/firebase/signup_firebase_service.dart';
 import 'package:news_app/features/sign_up/data/model/sign_up_request_body.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 class SignupFirebaseRepo {
   final SignupFirebaseService _signupFirebaseService;
@@ -65,7 +68,9 @@ class SignupFirebaseRepo {
       final LoginResult loginResult = await FacebookAuth.instance.login();
       if (loginResult.accessToken == null) {
         return ApiResult.failure(FirebaseErrorModel(
-            error: '⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)'));
+            error: LocaleKeys
+                    .PlatformException_FailedToConnectToTheServerCheckYourInternetConnection
+                .tr()));
       }
 
       // final response = await _loginFirebaseServies

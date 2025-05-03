@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,8 @@ import 'package:news_app/features/sign_up/ui/widget/sign_up_email_and_password.d
 import 'package:news_app/features/sign_up/ui/widget/signup_bloc_listener.dart';
 import 'package:news_app/features/sign_up/ui/widget/signup_social_media.dart';
 import 'package:news_app/features/sign_up/ui/widget/signup_text_button.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -33,12 +36,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Hello!",
+                  LocaleKeys.Login_Hello.tr(),
                   style: TextStyles.font48BlueGrayBold,
                 ),
                 verticalSpace(4),
                 Text(
-                  "Signup to get Started",
+                  LocaleKeys.SignUp_SignupToGetStarted.tr(),
                   style: TextStyles.font20PurpleGrayRegular,
                 ),
                 verticalSpace(65),
@@ -52,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 verticalSpace(16),
                 Center(
                   child: Text(
-                    'or continue with',
+                    LocaleKeys.Login_OrcontinueWith.tr(),
                     style: TextStyles.font14PurpleGrayRegular,
                   ),
                 ),
@@ -61,8 +64,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 verticalSpace(16),
                 Center(
                   child: AppTextRich(
-                      textOne: "Already have an account ?",
-                      textTwo: " Login",
+                      textOne: LocaleKeys.SignUp_AlreadyHaveAnAccount.tr(),
+                      textTwo: LocaleKeys.Login_Login.tr(),
                       styleOne: TextStyles.font14PurpleGrayRegular,
                       styleTwo: TextStyles.font14BlueSemiBold,
                       onTapTextTwo: () {

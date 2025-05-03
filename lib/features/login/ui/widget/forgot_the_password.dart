@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,8 @@ import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/logic/cubit/login_state.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 class ForgotThepassword extends StatelessWidget {
   const ForgotThepassword({
@@ -55,7 +58,7 @@ class ForgotThepassword extends StatelessWidget {
                   ),
                   horizontalSpace(4),
                   Text(
-                    "Remember me ",
+                    LocaleKeys.Login_RememberMe.tr(),
                     style: TextStyles.font12PurpleGrayRegular,
                   )
                 ],
@@ -65,7 +68,7 @@ class ForgotThepassword extends StatelessWidget {
               onTap: () {
                 context.read<LoginCubit>().forgotThepassword();
               },
-              child: Text("Forgot the password ?",
+              child: Text(LocaleKeys.Login_ForgotThePassword.tr(),
                   style: TextStyles.font12LightBlueRegular),
             ),
           ],
@@ -91,7 +94,7 @@ class ForgotThepassword extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            child: const Text("حسناً"),
+            child: Text(LocaleKeys.Login_Good.tr()),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ],

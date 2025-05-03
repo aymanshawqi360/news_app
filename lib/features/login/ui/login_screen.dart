@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,7 @@ import 'package:news_app/features/login/ui/widget/login_bloc_Listene.dart';
 import 'package:news_app/features/login/ui/widget/login_email_and_password.dart';
 import 'package:news_app/features/login/ui/widget/login_text_button.dart';
 import 'package:news_app/features/login/ui/widget/login_social_media.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,21 +34,20 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 167.w,
-                height: 144.h,
-                child: AppTextRich(
-                    textOne: "Hello ",
-                    styleOne: TextStyles.font48DarkGrayBold,
-                    textTwo: "Again! ",
-                    styleTwo: TextStyles.font48BuleBold),
+              Text(
+                LocaleKeys.Login_Hello.tr(),
+                style: TextStyles.font48DarkGrayBold,
+              ),
+              Text(
+                LocaleKeys.Login_Again.tr(),
+                style: TextStyles.font48BuleBold,
               ),
               verticalSpace(4),
               SizedBox(
                 //  width: 225.w,
-                height: 60.h,
+                //  height: 60.h,
                 child: Text(
-                  "Welcome back you’ve\nbeen missed",
+                  LocaleKeys.Login_WelcomeBackYouVebeenMissed.tr(),
                   style: TextStyles.font20PurpleGrayRegular,
                 ),
               ),
@@ -67,8 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
               verticalSpace(16),
               Center(
                 child: AppTextRich(
-                  textOne: "don’t have an account ?",
-                  textTwo: " Sign Up",
+                  textOne: LocaleKeys.Login_dontHaveAnAccount.tr(),
+                  textTwo: LocaleKeys.Login_SignUp.tr(),
                   styleOne: TextStyles.font14PurpleGrayRegular,
                   styleTwo: TextStyles.font14BlueSemiBold,
                   onTapTextTwo: () {

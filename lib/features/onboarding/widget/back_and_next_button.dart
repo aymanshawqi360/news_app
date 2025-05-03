@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/helpers/extensions.dart';
@@ -8,6 +9,8 @@ import 'package:news_app/core/helpers/spacing.dart';
 import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 // ignore: must_be_immutable
 class BackAndNextButton extends StatefulWidget {
@@ -45,7 +48,7 @@ class _BackAndNextButtonState extends State<BackAndNextButton> {
                         setState(() {});
                       },
                       child: Text(
-                        "Back",
+                        LocaleKeys.Onboarding_Back.tr(),
                         style: TextStyles.font16LightBlueSemiBold,
                       ),
                     ),
@@ -68,7 +71,7 @@ class _BackAndNextButtonState extends State<BackAndNextButton> {
                       borderRadius: BorderRadius.circular(8.r)),
                   child: Center(
                     child: Text(
-                      "Next",
+                      LocaleKeys.Onboarding_Next.tr(),
                       textAlign: TextAlign.center,
                       style: TextStyles.font16primarywhiteColorSemiBold,
                     ),

@@ -1,0 +1,89 @@
+{
+
+    
+    "SignUp":{
+        
+        "SignupToGetStarted":"Signup to get Started",
+        "AlreadyHaveAnAccount":"Already have an account ?"
+    },
+
+
+
+    "Login":{
+        "dontHaveAnAccount":"don’t have an account ? ",
+        "SignUp":"Sign Up",
+        "Hello":"Hello",
+        "Again":"Again!",
+        "WelcomeBackYouVebeenMissed":"Welcome back you’ve\nbeen missed",
+        "Email":"Email",
+        "Password":"Password",
+        "RememberMe":"Remember me",
+        "ForgotThePassword":"Forgot the password ?",
+        "Login":"Login",
+        "OrcontinueWith":"or continue with",
+        "Good":"Good",
+        "InvalidEmail":"Invalid email."
+    },
+
+
+
+    "Onboarding":{
+        "Next":"Next",
+        "Back":"Back",
+        "GetStarted":"Get Started",
+        "AllTheNewsThatMattersToYouInOnePlace":"All the news that matters to you in one place.",
+        "SelectYourInterestsAndLetUsTakeCareOfTheRest":"Choose your interests... and let us take care of the rest!",
+        "BeTheFirstToknowWithRealTimeBreakingNewsAlerts":"Be the first to know, with real-time breaking news alerts."
+    },
+
+
+    "FirebaseAuthException":{
+        "TheLoginInformationIsIncorrectOrExpired":"❌ The login information is incorrect or expired.",
+        "SignInWithGoogleIsNotEnabledInFirebaseSettings":"⚙️ Sign in with Google is not enabled in Firebase settings.",
+        "AnAccountIsAlreadyAssociatedWithThisEmailUsingADifferentRegistrationMethod":"📌 An account is already associated with this email using a different registration method.",
+        "InvalidEmail":"📧Invalid email.",
+        "ThisUserHasBeenDisabled":"🚫 This user has been disabled.",
+        "ThereIsNoAccountAssociatedWithThisEmail":"❌ There is no account associated with this email.",
+        "IncorrectPassword":"🔑 Incorrect password.",
+        "TheMailIsalreadyInUse":" The mail is already in use.",
+        "ThePasswordIsTooWeak":"🔐 The password is too weak.",
+        "TooManyLoginAttemptsTryAgainLater":" Too many login attempts. Try again later.",
+        "MakeSureYouHaveAnInternetConnectionAndTryAgain":"🌐 Make sure you have an internet connection and try again.",
+        "InvalidVerificationCode":"✉️ Invalid verification code.",
+        "InvalidIdentityVerificationCode":"🆔 Invalid identity verification code.",
+        "CredentialsAlreadyInUse":"♻️ Credentials already in use.",
+        "YouNeedToHaveRecentlyLoggedInToDoThis":"🔐 You need to have recently logged in to do this.",
+        "CredentialsDoNotMatchTheCurrentUser":"👥 Credentials do not match the current user.",
+        "ActionCodeExpired":" Action code expired.",
+        "InvalidActionCode":" Invalid action code.",
+        "SessionExpiredTryAgain":"⌛ Session expired, try again.",
+        "VerificationCodeNotEntered":"📩 Verification code not entered.",
+        "AnInternalSystemErrorOccurredTryAgain":"💥 An internal system error occurred. Try again.",
+        "LoginFailedTryAgain":"🚫 Login failed. Try again.",
+        "SomethingWentWrongTryAgainLater":"⚠️ Something went wrong. Try again later."
+        
+    },
+
+
+
+
+    "PlatformException":{
+        "FailedToConnectToTheServerCheckYourInternetConnection":" Failed to connect to the server (check your internet connection)",
+        "ServiceNameUnknownDNSIssue":" Service name unknown (DNS issue)",
+        "NetworkNotAvailableNoWiFiOrDataConnection":" Network not available (No Wi-Fi or data connection)",
+        "ConnectionTimedOutServerDidNotRespond":" Connection timed out (server did not respond)",
+        "TheServerRefusedTheConnectionItMayBeUnavailable" :" The server refused the connection (it may be unavailable)",
+        "NoWayToReachTheServerNetworkProblems":" No way to reach the server (network problems)",
+        "TemporaryDNSResolutionFailure":" Temporary DNS resolution failure"
+      
+
+    },
+    "FirebaseErrorFacebook":{
+        "FacebookAccountAccessPermissionDenied":"❌ Facebook account access permission denied",
+        "FacebookLoginFailedCheckAppSettings":"🚫 Facebook login failed (check app settings)",
+        "TheAppIsNotSetUpOnTheFacebookDeveloperConsole":"⚠️ The app is not set up on the Facebook Developer Console.",
+        "TheKeyIsIncorrectMakeSureYouAddedTheCorrectkeyHashInYourFacebookSettings":"❌ The key is incorrect (make sure you added the correct key hash in your Facebook settings)",
+        "FacebookAccountAccessDenied":"🚫 Facebook account access denied"
+        
+    }
+}

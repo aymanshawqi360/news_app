@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,8 @@ import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/widget/app_social_media.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/logic/cubit/login_state.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 class LoginSocialMedia extends StatelessWidget {
   const LoginSocialMedia({
@@ -81,7 +84,7 @@ _textShowDialog(BuildContext context, String state) {
       ),
       actions: [
         TextButton(
-          child: const Text("حسناً"),
+          child: Text(LocaleKeys.Login_Good.tr()),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ],

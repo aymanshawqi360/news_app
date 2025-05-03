@@ -1,5 +1,11 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="facebook_app_id">2212753605906394</string>
-    <string name="facebook_client_token">140c3ec6d6f809956d95e8a162f736ff</string>
+  <string name="app_name">testSignIn</string>
+  <string name="facebook_app_id">2212753605906394</string> 
+  <string name="fb_login_protocol_scheme">fba868f1987f6a500e3d6c861a54e8f00f</string>
+  <string name="facebook_client_token">140c3ec6d6f809956d95e8a162f736ff</string>
 </resources>
+
+
+
+
