@@ -1,0 +1,90 @@
+
+{
+   
+    
+    
+    "SignUp":{
+        
+        "SignupToGetStarted":"سجل للبدء",
+        "AlreadyHaveAnAccount":"هل لديك حساب بالفعل؟"
+    },
+    
+    "Login":{
+        "dontHaveAnAccount":"ليس لديك حساب؟",
+        "SignUp":"اشتراك",
+        "Hello":"مرحبًا",
+        "Again":"مرة أخرى!",
+        "WelcomeBackYouVebeenMissed":"أهلاً بعودتك، لقد افتقدناك",
+        "Email":"بريد إلكتروني",
+        "Password":"كلمة المرور",
+        "RememberMe":"تذكرنى",
+        "ForgotThePassword":"نسيت كلمة المرور؟",
+        "Login":"تسجيل الدخول",
+        "OrcontinueWith":"أو الاستمرار مع",
+        "Good":"حسناً",
+        "InvalidEmail":"البريد الإلكتروني غير صالح"
+      
+
+    },
+     
+
+
+    "Onboarding":{
+        "Next":"التالي",
+        "Back":"خلف",
+        "GetStarted":"البدء",
+        "AllTheNewsThatMattersToYouInOnePlace":"كل الأخبار التي تهمك في مكان واحد.",
+        "SelectYourInterestsAndLetUsTakeCareOfTheRest":"اختر اهتماماتك... ودعنا نهتم بالباقي!",
+        "BeTheFirstToknowWithRealTimeBreakingNewsAlerts":"كن أول من يعرف، مع تنبيهات الأخبار العاجلة في الوقت الحقيقي."
+
+    },
+
+    "FirebaseAuthException":{
+        "TheLoginInformationIsIncorrectOrExpired":"❌ بيانات تسجيل الدخول غير صحيحة أو منتهية.",
+        "SignInWithGoogleIsNotEnabledInFirebaseSettings":"⚙️ تسجيل الدخول باستخدام Google غير مفعل في إعدادات Firebase.",
+        "AnAccountIsAlreadyAssociatedWithThisEmailUsingADifferentRegistrationMethod":"📌يوجد حساب مرتبط بهذا البريد الإلكتروني باستخدام طريقة تسجيل مختلفة.",
+        "InvalidEmail":"📧 البريد الإلكتروني غير صالح.",
+        "ThisUserHasBeenDisabled":"🚫 هذا المستخدم تم تعطيله.",
+        "ThereIsNoAccountAssociatedWithThisEmail":"❌ لا يوجد حساب مرتبط بهذا البريد.",
+        "IncorrectPassword":"🔑 كلمة المرور غير صحيحة.",
+        "TheMailIsalreadyInUse":" البريد مستخدم مسبقًا.",
+        "ThePasswordIsTooWeak":"🔐 كلمة المرور ضعيفة جدًا.",
+        "TooManyLoginAttemptsTryAgainLater":" عدد محاولات تسجيل الدخول كبير جدًا. حاول لاحقًا.",
+        "MakeSureYouHaveAnInternetConnectionAndTryAgain":"🌐 تأكد من اتصال الإنترنت وحاول مرة أخرى.",
+        "InvalidVerificationCode":"✉️ رمز التحقق غير صحيح.",
+        "InvalidIdentityVerificationCode":"🆔 رمز التحقق من الهوية غير صالح.",
+        "CredentialsAlreadyInUse":"♻️ بيانات الاعتماد مستخدمة مسبقاً.",
+        "YouNeedToHaveRecentlyLoggedInToDoThis":"🔐 يلزم تسجيل الدخول مؤخرًا للقيام بهذه العملية.",
+        "CredentialsDoNotMatchTheCurrentUser":"👥 بيانات الاعتماد لا تتطابق مع المستخدم الحالي.",
+        "ActionCodeExpired":" رمز الإجراء منتهي.",
+        "InvalidActionCode":" رمز الإجراء غير صالح.",
+        "SessionExpiredTryAgain":"⌛ انتهت صلاحية الجلسة، حاول مرة أخرى.",
+        "VerificationCodeNotEntered":"📩 لم يتم إدخال رمز التحقق.",
+        "AnInternalSystemErrorOccurredTryAgain":"💥 حدث خطأ داخلي في النظام. حاول مرة أخرى.",
+        "LoginFailedTryAgain":"🚫 فشل تسجيل الدخول. حاول مرة أخرى.",
+        "SomethingWentWrongTryAgainLater":"⚠️ حدث خطأ ما. حاول مرة أخرى لاحقًا."
+        
+    },
+
+   
+    "PlatformException":{
+        "FailedToConnectToTheServerCheckYourInternetConnection":"⚠️ فشل في الاتصال بالخادم (تحقق من الاتصال بالإنترنت)",
+        "ServiceNameUnknownDNSIssue":"⚠️ اسم الخدمة غير معروف (مشكلة DNS)",
+        "NetworkNotAvailableNoWiFiOrDataConnection":"🚫 الشبكة غير متاحة (لا يوجد اتصال Wi-Fi أو بيانات)",
+        "ConnectionTimedOutServerDidNotRespond":"⏳ مهلة الاتصال انتهت (الخادم لم يستجب)",
+        "TheServerRefusedTheConnectionItMayBeUnavailable":"❌ الخادم رفض الاتصال (قد يكون غير متاح)",
+        "NoWayToReachTheServerNetworkProblems":"🚫 لا يوجد طريق للوصول إلى الخادم (مشاكل في الشبكة)",
+        "TemporaryDNSResolutionFailure":"⚠️ فشل مؤقت في تحليل اسم النطاق (DNS)"
+      
+
+    },
+
+    "FirebaseErrorFacebook":{
+        "FacebookAccountAccessPermissionDenied":"❌ تم رفض إذن الوصول إلى حساب Facebook",
+        "FacebookLoginFailedCheckAppSettings":"🚫 فشل تسجيل الدخول عبر Facebook (تحقق من إعدادات التطبيق)",
+        "TheAppIsNotSetUpOnTheFacebookDeveloperConsole":"⚠️ لم يتم إعداد التطبيق على Facebook Developer Console",
+        "TheKeyIsIncorrectMakeSureYouAddedTheCorrectkeyHashInYourFacebookSettings":"❌ المفتاح غير صحيح (تأكد من إضافة key hash الصحيح في إعدادات Facebook)",
+        "FacebookAccountAccessDenied":"🚫 تم رفض الوصول إلى حساب Facebook"
+        
+    }
+    }

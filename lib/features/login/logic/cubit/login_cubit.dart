@@ -101,6 +101,7 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginSuccessWithFacebook());
     } else if (response is Failure<String>) {
       log("LoginFailureWithFacebook=========2");
+      // log(response.)
       emit(LoginFailureWithFacebook(
           error: FirebaseErrorModel(error: response.error.error.toString())));
     }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/helpers/spacing.dart';
@@ -6,6 +7,8 @@ import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/core/widget/app_text_form_field.dart';
 import 'package:news_app/core/widget/app_text_rich.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
+import 'package:news_app/news_app.dart';
 
 class LoginEmailAndPassword extends StatefulWidget {
   const LoginEmailAndPassword({
@@ -27,7 +30,7 @@ class _LoginEmailAndPasswordState extends State<LoginEmailAndPassword> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppTextRich(
-            textOne: "Email ",
+            textOne: LocaleKeys.Login_Email.tr(),
             styleOne: TextStyles.font14PurpleGrayRegular,
             textTwo: "*",
             styleTwo: const TextStyle(color: ColorsManager.cerisePink),
@@ -37,7 +40,7 @@ class _LoginEmailAndPasswordState extends State<LoginEmailAndPassword> {
             controller: context.read<LoginCubit>().emilController,
             validator: (value) {
               if (value?.isEmpty == true) {
-                return "Invalid Email";
+                return LocaleKeys.Login_InvalidEmail.tr();
               } else {
                 return null;
               }
@@ -59,7 +62,7 @@ class _LoginEmailAndPasswordState extends State<LoginEmailAndPassword> {
           ),
           verticalSpace(16),
           AppTextRich(
-            textOne: "Password ",
+            textOne: LocaleKeys.Login_Password.tr(),
             styleOne: TextStyles.font14PurpleGrayRegular,
             textTwo: "*",
             styleTwo: const TextStyle(color: ColorsManager.cerisePink),
@@ -69,7 +72,7 @@ class _LoginEmailAndPasswordState extends State<LoginEmailAndPassword> {
             controller: context.read<LoginCubit>().passwordController,
             validator: (value) {
               if (value?.isEmpty == true) {
-                return "Invalid Password";
+                return LocaleKeys.Login_InvalidEmail.tr();
               } else {
                 return null;
               }

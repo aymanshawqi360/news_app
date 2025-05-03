@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/helpers/spacing.dart';
@@ -6,6 +7,7 @@ import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/core/widget/app_text_form_field.dart';
 import 'package:news_app/core/widget/app_text_rich.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
+import 'package:news_app/generated/locale_keys.g.dart';
 
 class SignUpEmailAndPassword extends StatefulWidget {
   const SignUpEmailAndPassword({
@@ -25,7 +27,7 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppTextRich(
-            textOne: "Email ",
+            textOne: LocaleKeys.Login_Email.tr(),
             styleOne: TextStyles.font14PurpleGrayRegular,
             textTwo: "*",
             styleTwo: const TextStyle(color: ColorsManager.cerisePink),
@@ -35,7 +37,7 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
             controller: context.read<SignUpCubit>().emilController,
             validator: (value) {
               if (value?.isEmpty == true) {
-                return "Invalid Email";
+                return LocaleKeys.Login_InvalidEmail.tr();
               } else {
                 return null;
               }
@@ -44,7 +46,7 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
           ),
           verticalSpace(16),
           AppTextRich(
-            textOne: "Password ",
+            textOne: LocaleKeys.Login_Password.tr(),
             styleOne: TextStyles.font14PurpleGrayRegular,
             textTwo: "*",
             styleTwo: const TextStyle(color: ColorsManager.cerisePink),
@@ -54,7 +56,7 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
             controller: context.read<SignUpCubit>().passwordController,
             validator: (value) {
               if (value?.isEmpty == true) {
-                return "Invalid Password";
+                return LocaleKeys.Login_InvalidEmail.tr();
               } else {
                 return null;
               }
@@ -79,7 +81,7 @@ class _SignUpEmailAndPasswordState extends State<SignUpEmailAndPassword> {
                     ),
                   ),
                   horizontalSpace(4),
-                  Text("Remember me ",
+                  Text(LocaleKeys.Login_RememberMe.tr(),
                       style: TextStyles.font12PurpleGrayRegular)
                 ],
               ),
