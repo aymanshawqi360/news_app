@@ -8,7 +8,6 @@ import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/logic/cubit/login_state.dart';
 import 'package:news_app/generated/locale_keys.g.dart';
-import 'package:news_app/news_app.dart';
 
 class ForgotThepassword extends StatelessWidget {
   const ForgotThepassword({
@@ -33,7 +32,7 @@ class ForgotThepassword extends StatelessWidget {
         }
         if (state is LoginFailureForgotThepassword) {
           _textShowDialog(
-              context, state.failureforgotThepassword.error.toString());
+              context, state.failureforgotThepassword.message.toString());
         }
       },
       builder: (context, state) {

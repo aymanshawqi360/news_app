@@ -1,121 +1,172 @@
-import 'dart:developer';
+// import 'package:easy_localization/easy_localization.dart';
 
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:news_app/core/notworking/api_erorr_model.dart';
+
 import 'package:news_app/core/notworking/firebase_error_model.dart';
 import 'package:news_app/generated/locale_keys.g.dart';
-import 'package:news_app/news_app.dart';
 
-class FirebaseErrorHandler {
+class ApiErrorHandler {
+
+static ApiErorrModel apiErrorHandle(dynamic error) {
+    if (error is DioException) {
+      switch (error.type) {
+        case DioExceptionType.cancel:
+          return ApiErorrModel(
+              message: "The request was cancelled before being sent.");
+
+        case DioExceptionType.connectionTimeout:
+          return ApiErorrModel(
+              message:
+                  "Connection to the server timed out. Please try again later.");
+
+        case DioExceptionType.sendTimeout:
+          return ApiErorrModel(
+              message: "Sending data took too long. Please try again.");
+
+        case DioExceptionType.receiveTimeout:
+          return ApiErorrModel(
+              message: "The app couldn't receive data in time.");
+
+        case DioExceptionType.badCertificate:
+          return ApiErorrModel(
+              message:
+                  "There is a problem with the server's security certificate.");
+
+        case DioExceptionType.badResponse:
+          return erroHundle(error.response?.data);
+
+        case DioExceptionType.connectionError:
+          return ApiErorrModel(
+              message: "Please check your internet connection and try again.");
+
+        case DioExceptionType.unknown:
+          return ApiErorrModel(
+              message: "An unexpected error occurred. Please try again");
+      }
+    } else {
+      return ApiErorrModel(message: "Unknown error occurred");
+    }
+  }
+
+  static ApiErorrModel erroHundle(dynamic data) {
+    return ApiErorrModel(message: data);
+  }
+
   static FirebaseErrorModel handle(dynamic e) {
     if (e is Exception) {
       if (e is FirebaseAuthException) {
         switch (e.code) {
           case 'invalid-credential':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_TheLoginInformationIsIncorrectOrExpired
                     .tr());
           case 'operation-not-allowed':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_SignInWithGoogleIsNotEnabledInFirebaseSettings
                     .tr());
           case 'account-exists-with-different-credential':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_AnAccountIsAlreadyAssociatedWithThisEmailUsingADifferentRegistrationMethod
                     .tr());
           case 'invalid-email':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_InvalidEmail.tr());
+                message: LocaleKeys.FirebaseAuthException_InvalidEmail.tr());
           case 'user-disabled':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_ThisUserHasBeenDisabled
-                    .tr());
+                message: LocaleKeys
+                    .FirebaseAuthException_ThisUserHasBeenDisabled.tr());
 
           case 'user-not-found':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_ThereIsNoAccountAssociatedWithThisEmail
                     .tr());
           case 'wrong-password':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_IncorrectPassword.tr());
+                message:
+                    LocaleKeys.FirebaseAuthException_IncorrectPassword.tr());
           case 'email-already-in-use':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_TheMailIsalreadyInUse
+                message: LocaleKeys.FirebaseAuthException_TheMailIsalreadyInUse
                     .tr());
           case 'weak-password':
             return FirebaseErrorModel(
-                error:
+                message:
                     LocaleKeys.FirebaseAuthException_ThePasswordIsTooWeak.tr());
 
           case 'too-many-requests':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_TooManyLoginAttemptsTryAgainLater
                     .tr());
           case 'network-request-failed':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_MakeSureYouHaveAnInternetConnectionAndTryAgain
                     .tr());
 
           case 'invalid-verification-code':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_InvalidVerificationCode
-                    .tr());
+                message: LocaleKeys
+                    .FirebaseAuthException_InvalidVerificationCode.tr());
           case 'invalid-verification-id':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_InvalidIdentityVerificationCode
                     .tr());
 
           case 'credential-already-in-use':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_CredentialsAlreadyInUse
-                    .tr());
+                message: LocaleKeys
+                    .FirebaseAuthException_CredentialsAlreadyInUse.tr());
           case 'requires-recent-login':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_YouNeedToHaveRecentlyLoggedInToDoThis
                     .tr());
           case 'user-mismatch':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_CredentialsDoNotMatchTheCurrentUser
                     .tr());
           case 'expired-action-code':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_ActionCodeExpired.tr());
+                message:
+                    LocaleKeys.FirebaseAuthException_ActionCodeExpired.tr());
           case 'invalid-action-code':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_InvalidActionCode.tr());
+                message:
+                    LocaleKeys.FirebaseAuthException_InvalidActionCode.tr());
           case 'session-expired':
             return FirebaseErrorModel(
-                error: LocaleKeys.FirebaseAuthException_SessionExpiredTryAgain
+                message: LocaleKeys.FirebaseAuthException_SessionExpiredTryAgain
                     .tr());
           case 'missing-verification-code':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                     .FirebaseAuthException_VerificationCodeNotEntered.tr());
 
           case 'internal-error':
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_AnInternalSystemErrorOccurredTryAgain
                     .tr());
 
           case 'sign_in_failed':
             return FirebaseErrorModel(
-                error:
+                message:
                     LocaleKeys.FirebaseAuthException_LoginFailedTryAgain.tr());
 
           default:
             return FirebaseErrorModel(
-                error: LocaleKeys
+                message: LocaleKeys
                         .FirebaseAuthException_SomethingWentWrongTryAgainLater
                     .tr());
         }
@@ -127,43 +178,44 @@ class FirebaseErrorHandler {
             message.contains('7:') ||
             details == '7') {
           return FirebaseErrorModel(
-              error: LocaleKeys
+              message: LocaleKeys
                       .PlatformException_FailedToConnectToTheServerCheckYourInternetConnection
                   .tr());
         } else if (details == '8') {
           return FirebaseErrorModel(
-            error: LocaleKeys.PlatformException_ServiceNameUnknownDNSIssue.tr(),
+            message:
+                LocaleKeys.PlatformException_ServiceNameUnknownDNSIssue.tr(),
           );
         } else if (details == '101') {
           return FirebaseErrorModel(
-            error: LocaleKeys
+            message: LocaleKeys
                     .PlatformException_NetworkNotAvailableNoWiFiOrDataConnection
                 .tr(),
           );
         } else if (details == '110') {
           return FirebaseErrorModel(
-            error: LocaleKeys
+            message: LocaleKeys
                 .PlatformException_ConnectionTimedOutServerDidNotRespond.tr(),
           );
         } else if (details == '111') {
           return FirebaseErrorModel(
-            error: LocaleKeys
+            message: LocaleKeys
                     .PlatformException_TheServerRefusedTheConnectionItMayBeUnavailable
                 .tr(),
           );
         } else if (details == '113') {
           return FirebaseErrorModel(
-            error: LocaleKeys
+            message: LocaleKeys
                 .PlatformException_NoWayToReachTheServerNetworkProblems.tr(),
           );
         } else if (details == '-2') {
           return FirebaseErrorModel(
-            error:
+            message:
                 LocaleKeys.PlatformException_TemporaryDNSResolutionFailure.tr(),
           );
         } else if (details == 'ERROR_NETWORK_REQUEST_FAILED' || code.isEmpty) {
           return FirebaseErrorModel(
-            error: LocaleKeys
+            message: LocaleKeys
                     .PlatformException_FailedToConnectToTheServerCheckYourInternetConnection
                 .tr(),
           );
@@ -171,38 +223,37 @@ class FirebaseErrorHandler {
       }
     } else if (e == 'permission_denied') {
       return FirebaseErrorModel(
-        error:
+        message:
             LocaleKeys.FirebaseErrorFacebook_FacebookAccountAccessDenied.tr(),
       );
     } else if (e == 'login_failed') {
       return FirebaseErrorModel(
-        error: LocaleKeys
+        message: LocaleKeys
             .FirebaseErrorFacebook_FacebookLoginFailedCheckAppSettings.tr(),
       );
     } else if (e == 'app_not_set_up') {
       return FirebaseErrorModel(
-        error: LocaleKeys
+        message: LocaleKeys
                 .FirebaseErrorFacebook_TheAppIsNotSetUpOnTheFacebookDeveloperConsole
             .tr(),
       );
     } else if (e == 'invalid_key_hash') {
       return FirebaseErrorModel(
-        error: LocaleKeys
+        message: LocaleKeys
                 .FirebaseErrorFacebook_TheKeyIsIncorrectMakeSureYouAddedTheCorrectkeyHashInYourFacebookSettings
             .tr(),
       );
     } else if (e == 'access_denied') {
       return FirebaseErrorModel(
-          error: LocaleKeys.FirebaseErrorFacebook_FacebookAccountAccessDenied
+          message: LocaleKeys.FirebaseErrorFacebook_FacebookAccountAccessDenied
               .tr());
     } else {
       return FirebaseErrorModel(
-        error: '💥 حدث استثناء غير معروف: ${e.toString()}',
+        message: '💥 حدث استثناء غير معروف: ${e.toString()}',
       );
     }
 
-    log(e.toString());
-    return FirebaseErrorModel(error: "🚨 خطأ غير متوقع: ${e.toString()}");
+    return FirebaseErrorModel(message: "🚨 خطأ غير متوقع: ${e.toString()}");
 
     // log("message-================${e.toString()}");
     // return FirebaseErrorModel(error: e.toString());

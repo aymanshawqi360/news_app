@@ -12,7 +12,6 @@ import 'package:news_app/core/widget/app_social_media.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/logic/cubit/login_state.dart';
 import 'package:news_app/generated/locale_keys.g.dart';
-import 'package:news_app/news_app.dart';
 
 class LoginSocialMedia extends StatelessWidget {
   const LoginSocialMedia({
@@ -32,7 +31,7 @@ class LoginSocialMedia extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginLoadingSignInWithGoogle) {}
         if (state is LoginFailureSignInWithGoogle) {
-          _textShowDialog(context, state.error!.error.toString());
+          _textShowDialog(context, state.error!.message.toString());
         }
         if (state is LoginSuccessSignInWithGoogle) {
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
@@ -43,7 +42,7 @@ class LoginSocialMedia extends StatelessWidget {
         }
         if (state is LoginFailureWithFacebook) {
           //
-          _textShowDialog(context, state.error!.error.toString());
+          _textShowDialog(context, state.error!.message.toString());
         }
       },
       child: Row(

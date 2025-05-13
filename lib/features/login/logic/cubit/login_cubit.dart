@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +27,13 @@ class LoginCubit extends Cubit<LoginState> {
       } else {
         emit(LoginFailure(
             error: FirebaseErrorModel(
-                error:
+                message:
                     "تم إرسال رابط تفعيل إلى بريدك الإلكتروني. يرجى التحقق لتفعيل الحساب")));
       }
     }
     if (response is Failure<UserCredential>) {
-      emit(
-          LoginFailure(error: FirebaseErrorModel(error: response.error.error)));
+      emit(LoginFailure(
+          error: FirebaseErrorModel(message: response.error.toString())));
     }
   }
 
@@ -58,24 +55,21 @@ class LoginCubit extends Cubit<LoginState> {
     } else if (response is Failure<String>) {
       emit(LoginFailureForgotThepassword(
           failureforgotThepassword:
-              FirebaseErrorModel(error: response.error.error.toString())));
+              FirebaseErrorModel(message: response.error.toString())));
     }
   }
 
   signInWithGoogle() async {
-    log("LoginLoadingSignInWithGoogle==================");
     emit(LoginLoadingSignInWithGoogle());
 
     final response = await _loginRepo.signInWithGoogle();
 
     if (response is Success<String>) {
-      log("LoginSuccessSignInWithGoogle==================");
       emit(LoginSuccessSignInWithGoogle(
           isSignInGoogle: response.data.toString()));
     } else if (response is Failure<String>) {
-      log("LoginFailureSignInWithGoogle==================");
       emit(LoginFailureSignInWithGoogle(
-          error: FirebaseErrorModel(error: response.error.error.toString())));
+          error: FirebaseErrorModel(message: response.error.toString())));
     }
   }
 
@@ -92,18 +86,15 @@ class LoginCubit extends Cubit<LoginState> {
 
   loginWithFacebook() async {
     //
-    log("LoginLoadingWithFacebook");
+
     emit(LoginLoadingWithFacebook());
     final response = await _loginRepo.loginWithFacebook();
     if (response is Success<String>) {
-      log("LoginSuccessWithFacebook");
-
       emit(LoginSuccessWithFacebook());
     } else if (response is Failure<String>) {
-      log("LoginFailureWithFacebook=========2");
       // log(response.)
       emit(LoginFailureWithFacebook(
-          error: FirebaseErrorModel(error: response.error.error.toString())));
+          error: FirebaseErrorModel(message: response.error.toString())));
     }
   }
 }

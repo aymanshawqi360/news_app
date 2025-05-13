@@ -28,13 +28,13 @@ class SignupSocialMedia extends StatelessWidget {
       listener: (context, state) {
         if (state is SignUpWithGoogleLoading) {
         } else if (state is SignUpWithGoogleFailure) {
-          _textShowDialog(context, state.error!.error.toString());
+          _textShowDialog(context, state.error!.message.toString());
         } else if (state is SignUpWithGoogleSuccess) {
           // _textShowDialog(context, state.successFull.toString());
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
         } else if (state is SignUpLoadingWithFacebook) {
         } else if (state is SignUpFailureWithFacebook) {
-          _textShowDialog(context, state.error!.error.toString());
+          _textShowDialog(context, state.error!.message.toString());
         } else if (state is SignUpSuccessWithFacebook) {
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
         }

@@ -76,4 +76,39 @@ class TextStyles {
     fontWeight: FontWeighthelper.semiBold,
     color: ColorsManager.blue,
   );
+  static TextStyle font16BlackSemiBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.black,
+  );
+  static TextStyle font14GreydarkRegular = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.greydark,
+  );
+  static TextStyle font13GreydarkRegular = GoogleFonts.poppins(
+    fontSize: 13.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.greydark,
+  );
+  static TextStyle font16blackSemiBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.black,
+  );
+  static TextStyle font13greydarkSemiBold = GoogleFonts.poppins(
+    fontSize: 13.sp,
+    fontWeight: FontWeighthelper.semiBold,
+    color: ColorsManager.greydark,
+  );
+  static TextStyle font16PurpleGrayRegular = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.purpleGray,
+  );
+  static TextStyle font16BlackRegular = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.black,
+  );
 }

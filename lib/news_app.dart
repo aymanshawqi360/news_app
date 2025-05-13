@@ -23,6 +23,8 @@ class NewsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: ColorsManager.primarywhiteColor,
+          appBarTheme:
+              AppBarTheme(backgroundColor: ColorsManager.primarywhiteColor),
         ),
         initialRoute: (FirebaseFactory().firebaseAuth!.currentUser != null &&
                 FirebaseFactory().firebaseAuth!.currentUser!.emailVerified)

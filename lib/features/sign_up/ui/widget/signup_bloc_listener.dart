@@ -25,7 +25,7 @@ class SignUpBlocListener extends StatelessWidget {
           } else if (state is SignUpSuccess) {
             context.pushReplacementNamed(Routes.login);
           } else if (state is SignUpFailure) {
-            _textShowDialog(context, error: state.error.error.toString());
+            _textShowDialog(context, error: state.error.toString());
           }
         },
         child: const SizedBox.shrink());
