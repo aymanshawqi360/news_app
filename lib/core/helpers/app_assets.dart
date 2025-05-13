@@ -7,4 +7,6 @@ class AppAssets {
   String onboardingScreenThree = "assets/images/onboarding_screen_three.png";
   String iconFaceBook = "assets/svgs/icon_facebook.svg";
   String iconGoogle = "assets/svgs/icon_google.svg";
+  String newsLogo = "assets/svgs/news_logo.svg";
+  String notifications = "assets/svgs/notifications.svg";
 }

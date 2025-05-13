@@ -27,7 +27,7 @@ class LoginBlocListene extends StatelessWidget {
           context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
         }
         if (state is LoginFailure) {
-          _textShowDialog(context, error: state.error.error.toString());
+          _textShowDialog(context, error: state.error.message.toString());
         }
       },
       child: Container(),

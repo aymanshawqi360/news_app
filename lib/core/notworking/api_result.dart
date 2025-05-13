@@ -1,9 +1,8 @@
-import 'package:news_app/core/notworking/firebase_error_model.dart';
-
 abstract class ApiResult<T> {
   const ApiResult();
   factory ApiResult.success(T data) = Success;
-  factory ApiResult.failure(FirebaseErrorModel error) = Failure;
+
+  factory ApiResult.failure(BaseErrorModel error) = Failure;
 }
 
 class Success<T> extends ApiResult<T> {
@@ -12,6 +11,10 @@ class Success<T> extends ApiResult<T> {
 }
 
 class Failure<T> extends ApiResult<T> {
-  final FirebaseErrorModel error;
+  final BaseErrorModel error;
   Failure(this.error);
+}
+
+abstract class BaseErrorModel {
+  String? message;
 }

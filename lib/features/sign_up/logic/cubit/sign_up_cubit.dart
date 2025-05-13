@@ -22,7 +22,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       emit(SignUpSuccess());
     } else if (response is Failure<String>) {
       emit(SignUpFailure(
-          error: FirebaseErrorModel(error: response.error.error.toString())));
+          error: FirebaseErrorModel(message: response.error.toString())));
     }
   }
 
@@ -36,7 +36,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     } else if (response is Failure<String>) {
       debugPrint("SignUpWithGoodleFailure===================");
       emit(SignUpWithGoogleFailure(
-          error: FirebaseErrorModel(error: response.error.error.toString())));
+          error: FirebaseErrorModel(message: response.error.toString())));
     }
   }
 
@@ -51,7 +51,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     } else if (response is Failure<String>) {
       // log("LoginFailureWithFacebook=========");
       emit(SignUpFailureWithFacebook(
-          error: FirebaseErrorModel(error: response.error.error.toString())));
+          error: FirebaseErrorModel(message: response.error.toString())));
     }
   }
 }

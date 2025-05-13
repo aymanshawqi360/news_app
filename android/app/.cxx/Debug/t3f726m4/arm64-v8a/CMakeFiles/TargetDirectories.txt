@@ -1,0 +1,2 @@
+D:/Special projects _ui/news_app/android/app/.cxx/Debug/t3f726m4/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Special projects _ui/news_app/android/app/.cxx/Debug/t3f726m4/arm64-v8a/CMakeFiles/rebuild_cache.dir
