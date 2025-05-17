@@ -54,10 +54,25 @@ dependencies:
   # for dependency injection
   get_it: ^8.0.3
   # app language 
-  easy_localization: ^3.0.7+1
+  easy_localization: 
   # Networking
   dio: ^5.8.0+1
+  retrofit: ^4.4.2
+  retrofit_generator: ^9.2.0
   pretty_dio_logger: ^1.4.0
+  #A build system for Dart code generation and modular compilation
+  build_runner: ^2.4.15
+  # Automatically generate code for converting to and from JSON by annotating Dart classes
+  json_annotation: ^4.9.0
+  json_serializable: ^6.9.5
+  # A library useful for creating fuzzy timestamps. (e.g. "15 minutes ago")
+  timeago: ^3.7.1
+  # Render After Effects animations natively on Flutter. This package is a pure Dart implementation of a Lottie player.
+  lottie: ^3.3.1
+  # Flutter library to load and cache network images.
+  cached_network_image: ^3.4.1
+  # A package that automatically generate a loading widget from your own widget.
+  redacted: ^1.0.13
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -85,6 +100,7 @@ flutter:
     - assets/images/
     - assets/svgs/
     - assets/translations/
+    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

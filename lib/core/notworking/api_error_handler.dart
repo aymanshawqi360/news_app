@@ -10,8 +10,7 @@ import 'package:news_app/core/notworking/firebase_error_model.dart';
 import 'package:news_app/generated/locale_keys.g.dart';
 
 class ApiErrorHandler {
-
-static ApiErorrModel apiErrorHandle(dynamic error) {
+  static ApiErorrModel apiErrorHandle(dynamic error) {
     if (error is DioException) {
       switch (error.type) {
         case DioExceptionType.cancel:
@@ -37,7 +36,7 @@ static ApiErorrModel apiErrorHandle(dynamic error) {
                   "There is a problem with the server's security certificate.");
 
         case DioExceptionType.badResponse:
-          return erroHundle(error.response?.data);
+          return erroHundle(error.response!.data['message']);
 
         case DioExceptionType.connectionError:
           return ApiErorrModel(

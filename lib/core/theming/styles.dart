@@ -111,4 +111,9 @@ class TextStyles {
     fontWeight: FontWeighthelper.regular,
     color: ColorsManager.black,
   );
+  static TextStyle font13purpleGrayRegular = GoogleFonts.poppins(
+    fontSize: 13.sp,
+    fontWeight: FontWeighthelper.regular,
+    color: ColorsManager.purpleGray,
+  );
 }
