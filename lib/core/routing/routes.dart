@@ -5,4 +5,6 @@ class Routes {
   static const String signUp = '/signUp';
   static const String register = '/register';
   static const String profile = '/profile';
+  static const String buttonNavigationBetweenScreens =
+      '/buttonNavigationBetweenScreens';
 }

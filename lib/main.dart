@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/di/dependency_injection.dart';
+import 'package:news_app/core/helpers/app_bloc_observer.dart';
 import 'package:news_app/core/routing/app_routing.dart';
 import 'package:news_app/generated/codegen_loader.g.dart';
 
@@ -17,6 +19,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupGetIt();
+  Bloc.observer = AppBlocObserver();
 
   runApp(
     EasyLocalization(

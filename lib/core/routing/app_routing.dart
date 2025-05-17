@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/di/dependency_injection.dart';
 import 'package:news_app/core/routing/routes.dart';
+import 'package:news_app/features/button_navigation_between_screens/button_navigation_between_screens.dart';
 import 'package:news_app/features/home/presentation/home_screen.dart';
 import 'package:news_app/features/home/logic/cubit/cubit_trending/home_trending_cubit.dart';
 import 'package:news_app/features/home/logic/cubit/home_news_cubit.dart';
@@ -29,18 +30,11 @@ class AppRouting {
                   child: const SignUpScreen(),
                 ));
       case Routes.home:
-        return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                      create: (context) => getIt<HomeNewsCubit>(),
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<HomeTrendingCubit>(),
-                    ),
-                  ],
-                  child: const HomeScreen(),
-                ));
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.buttonNavigationBetweenScreens:
+        return MaterialPageRoute(builder: (_) {
+          return const ButtonNavigationBetweenScreens();
+        });
 
       default:
         return null;

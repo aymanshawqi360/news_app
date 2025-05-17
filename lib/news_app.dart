@@ -28,7 +28,7 @@ class NewsApp extends StatelessWidget {
         ),
         initialRoute: (FirebaseFactory().firebaseAuth!.currentUser != null &&
                 FirebaseFactory().firebaseAuth!.currentUser!.emailVerified)
-            ? Routes.home
+            ? Routes.buttonNavigationBetweenScreens
             : Routes.onboarding,
         onGenerateRoute: appRouting.generateRoute,
       ),
