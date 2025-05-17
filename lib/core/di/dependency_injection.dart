@@ -40,10 +40,9 @@ void setupGetIt() {
 //Home//Latest
   getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
-  getIt.registerLazySingleton<HomeNewsCubit>(() => HomeNewsCubit(getIt()));
+  getIt.registerFactory<HomeNewsCubit>(() => HomeNewsCubit(getIt()));
 
 //Home//Trending
 
-  getIt.registerLazySingleton<HomeTrendingCubit>(
-      () => HomeTrendingCubit(getIt()));
+  getIt.registerFactory<HomeTrendingCubit>(() => HomeTrendingCubit(getIt()));
 }

@@ -27,7 +27,7 @@ class _BlocBuliderAllNewsState extends State<BlocBuliderAllNews> {
       listener: (context, state) {
         if (state is HomeAllDataFailure) {
           //   setupErrorState(context, state.message.message.toString());
-          _textShowDialog(context, error: state.message.message.toString());
+          //   _textShowDialog(context, error: state.message.message.toString());
         }
       },
       buildWhen: (previous, current) =>

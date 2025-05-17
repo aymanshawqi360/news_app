@@ -24,10 +24,10 @@ class _BlocListenerViewNewsState extends State<BlocListenerViewNews> {
   @override
   void initState() {
     // isLoadgin = true;
-    /// context.read<HomeNewsCubit>().getLatestSports();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<HomeNewsCubit>().getLatestSports();
-    });
+    context.read<HomeNewsCubit>().getLatestSports();
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    // context.read<HomeNewsCubit>().getLatestNews(category: "Sporte");
+    // });
     super.initState();
   }
 
@@ -39,7 +39,7 @@ class _BlocListenerViewNewsState extends State<BlocListenerViewNews> {
           listener: (context, state) {
             if (state is HomeNewsFailure) {
               //  setupErrorState(context, state.message.message.toString());
-              // _textShowDialog(context, error: state.message.message.toString());
+              _textShowDialog(context, error: state.message.message.toString());
             }
           },
           buildWhen: (previous, current) =>
@@ -64,11 +64,10 @@ class _BlocListenerViewNewsState extends State<BlocListenerViewNews> {
     return ListView.builder(
         itemCount: latestList.length,
         itemBuilder: (context, index) {
-          return LatestShimmerLoading(
-              articlesModel: latestList.isNotEmpty
-                  ? latestList[index]
-                  : context.read<HomeNewsCubit>().ccc[
-                      index]); // Provide a default Articles instance if list is empty
+          return latestList.isNotEmpty
+              ? LatestShimmerLoading(articlesModel: latestList[index])
+              : LatestShimmerLoading(
+                  articlesModel: context.read<HomeNewsCubit>().ccc[index]);
         });
   }
 
@@ -91,4 +90,29 @@ class _BlocListenerViewNewsState extends State<BlocListenerViewNews> {
           );
         });
   }
+}
+
+_textShowDialog(BuildContext context, {required String error}) {
+  return showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      // title: const Text("تم إرسال البريد"),
+      title: const Icon(
+        Icons.error,
+        color: Colors.red,
+      ),
+      // Text("تم إرسال رابط تفعيل إلى بريدك الإلكتروني. يرجى التحقق لتفعيل الحساب."),
+      content: Text(
+        textAlign: TextAlign.center,
+        error,
+        style: TextStyle(fontSize: 20.sp),
+      ),
+      actions: [
+        TextButton(
+          child: Text("Ok"),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ],
+    ),
+  );
 }

@@ -11,22 +11,28 @@ class HomeTrendingCubit extends Cubit<HomeTrendingState> {
   HomeTrendingCubit(this._homeRepo) : super(HomeTrendingInitial());
 
   getAllData({required int pageSize, required int page}) async {
+    //  if (isClosed) return;
     emit(HomeAllDataLoading());
     final response = await _homeRepo.getAllData(pageSize: pageSize, page: page);
     if (response is Success<HomeResponseModel>) {
+      //   if (isClosed) return;
       emit(HomeAllDataSuccess(allData: response.data.articles!));
     } else if (response is Failure<HomeResponseModel>) {
+      //   if (isClosed) return;
       emit(HomeAllDataFailure(
           message: ApiErorrModel(message: response.error.message.toString())));
     }
   }
 
   getTrending() async {
+    // if (isClosed) return;
     emit(HomeAllDataLoading());
     final response = await _homeRepo.getAllData(pageSize: 20, page: 1);
     if (response is Success<HomeResponseModel>) {
+      //   if (isClosed) return;
       emit(HomeAllDataSuccess(allData: response.data.articles ?? []));
     } else if (response is Failure<HomeResponseModel>) {
+      // if (isClosed) return;
       emit(HomeAllDataFailure(
           message: ApiErorrModel(message: response.error.message.toString())));
     }
