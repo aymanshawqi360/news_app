@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/di/dependency_injection.dart';
 import 'package:news_app/core/routing/routes.dart';
-import 'package:news_app/features/home/home_screen.dart';
+import 'package:news_app/features/home/presentation/home_screen.dart';
+import 'package:news_app/features/home/logic/cubit/cubit_trending/home_trending_cubit.dart';
+import 'package:news_app/features/home/logic/cubit/home_news_cubit.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/ui/login_screen.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
@@ -27,7 +29,18 @@ class AppRouting {
                   child: const SignUpScreen(),
                 ));
       case Routes.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<HomeNewsCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<HomeTrendingCubit>(),
+                    ),
+                  ],
+                  child: const HomeScreen(),
+                ));
 
       default:
         return null;
