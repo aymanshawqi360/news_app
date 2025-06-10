@@ -67,7 +67,8 @@ class _BlocListenerViewNewsState extends State<BlocListenerViewNews> {
           return latestList.isNotEmpty
               ? LatestShimmerLoading(articlesModel: latestList[index])
               : LatestShimmerLoading(
-                  articlesModel: context.read<HomeNewsCubit>().ccc[index]);
+                  articlesModel:
+                      context.read<HomeNewsCubit>().listLatestLoading[index]);
         });
   }
 

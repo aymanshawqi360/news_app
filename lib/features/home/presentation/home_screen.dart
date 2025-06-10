@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/core/di/dependency_injection.dart';
 import 'package:news_app/core/helpers/app_assets.dart';
+import 'package:news_app/core/helpers/extensions.dart';
 import 'package:news_app/core/helpers/spacing.dart';
+import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
 
@@ -12,6 +16,8 @@ import 'package:news_app/core/widget/app_view_list_category.dart';
 import 'package:news_app/features/home/presentation/widget/latest/bloc_Listener_view_news.dart';
 import 'package:news_app/features/home/presentation/widget/trending/bloc_bulider_all_news.dart';
 import 'package:news_app/features/home/presentation/widget/trending/trending.dart';
+import 'package:news_app/features/trending/logic/cubit/trending_cubit.dart';
+import 'package:news_app/features/trending/presentation/trending_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarLogoAndNotifications(),
+      appBar: appBarLogoAndNotifications(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(children: [
@@ -40,7 +46,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 "Trending",
                 style: TextStyles.font16BlackSemiBold,
               ),
-              Text("See all", style: TextStyles.font14GreydarkRegular),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return BlocProvider(
+                        create: (context) =>
+                            getIt<TrendingCubit>()..getAllNewsTrending(),
+                        child: const TrendingScreen(),
+                      );
+                    }));
+                  },
+                  child:
+                      Text("See all", style: TextStyles.font14GreydarkRegular)),
             ],
           ),
           verticalSpace(16),
@@ -68,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  AppBar AppBarLogoAndNotifications() {
+  AppBar appBarLogoAndNotifications() {
     return AppBar(
       title: SvgPicture.asset(
         AppAssets().newsLogo,
@@ -93,24 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             child: Image.asset(
-              "assets/images/n.png",
+              AppAssets.instance.notification,
+              scale: 2,
             )),
       ],
     );
   }
 }
-
-// GestureDetector(
-//     onTap: () {
-//       FirebaseFactory().firebaseAuth!.signOut();
-
-//       // GoogleSignIn googleSignIn = GoogleSignIn();
-//       FirebaseFactory().googleSignIn!.disconnect();
-//       FirebaseFactory().facebookAuth!.logOut();
-
-//       // googleSignIn.disconnect();
-
-//       context.pushNamedAndRemoveUntil(Routes.login,
-//           predicate: (v) => false);
-//     },
-//     child: const Icon(Icons.output))

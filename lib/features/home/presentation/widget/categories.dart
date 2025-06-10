@@ -33,7 +33,7 @@ class Categories extends StatelessWidget {
                       color: ColorsManager.blue,
                       borderRadius: BorderRadius.circular(6.r)),
                 )
-              : SizedBox.shrink()
+              : const SizedBox.shrink()
         ],
       ),
     );

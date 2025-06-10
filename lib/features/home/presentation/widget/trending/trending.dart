@@ -15,12 +15,6 @@ class Trending extends StatefulWidget {
 }
 
 class _TrendingState extends State<Trending> {
-  // @override
-  // void initState() {
-  //   context.read<HomeNewsCubit>().getLatestNews(category: 'Sports');
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,14 +31,10 @@ class _TrendingState extends State<Trending> {
             style: TextStyles.font13GreydarkRegular,
           ),
           verticalSpace(4),
-          widget.listTrending.urlToImage!.isEmpty
-              ? const Text(
-                  "Russian warship: Moskva sinks in Black Sea",
-                )
-              : Text(
-                  widget.listTrending.title!,
-                  style: TextStyles.font16blackSemiBold,
-                ),
+          Text(
+            widget.listTrending.title!,
+            style: TextStyles.font16blackSemiBold,
+          ),
           TrendingImageAndSourceNameAndPublishedat(
             articlesModel: widget.listTrending,
           )

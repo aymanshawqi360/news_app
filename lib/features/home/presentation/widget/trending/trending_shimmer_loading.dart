@@ -74,7 +74,7 @@ class TrendingShimmerLoading extends StatelessWidget {
       context: context,
       redact: true,
       configuration: RedactedConfiguration(
-        animationDuration: const Duration(milliseconds: 800), //default
+        animationDuration: const Duration(milliseconds: 800),
       ),
     );
   }

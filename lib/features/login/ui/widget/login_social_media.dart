@@ -34,11 +34,13 @@ class LoginSocialMedia extends StatelessWidget {
           _textShowDialog(context, state.error!.message.toString());
         }
         if (state is LoginSuccessSignInWithGoogle) {
-          context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
+          context.pushNamedAndRemoveUntil(Routes.buttonNavigationBetweenScreens,
+              predicate: (v) => false);
         }
         if (state is LoginLoadingWithFacebook) {}
         if (state is LoginSuccessWithFacebook) {
-          context.pushNamedAndRemoveUntil(Routes.home, predicate: (v) => false);
+          context.pushNamedAndRemoveUntil(Routes.buttonNavigationBetweenScreens,
+              predicate: (v) => false);
         }
         if (state is LoginFailureWithFacebook) {
           //
