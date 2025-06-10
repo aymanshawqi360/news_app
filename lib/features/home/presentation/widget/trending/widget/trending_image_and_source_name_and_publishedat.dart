@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/core/helpers/app_assets.dart';
 import 'package:news_app/core/helpers/data_time_redacted.dart';
+import 'package:news_app/core/helpers/extensions.dart';
 import 'package:news_app/core/helpers/spacing.dart';
+import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/colors.dart';
 import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/features/home/data/model/home_response_model.dart';
@@ -25,7 +28,8 @@ class TrendingImageAndSourceNameAndPublishedat extends StatelessWidget {
                 width: 25.w,
                 height: 25.h,
                 fit: BoxFit.cover,
-                imageUrl: articlesModel.urlToImage!,
+                imageUrl: articlesModel.urlToImage ??
+                    AppAssets.instance.imageErrorNews,
 
                 // fit: BoxFit.cover,
                 placeholder: (context, url) {
@@ -38,12 +42,11 @@ class TrendingImageAndSourceNameAndPublishedat extends StatelessWidget {
                   // return Icon(Icons.error);
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(16.r),
-                    child: Image.network(
-                      width: 25.w,
-                      fit: BoxFit.cover,
-                      height: 25.h,
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSApAtgdXBbpiIn6crvbF3sTm_vkZq5UGOFw&s",
-                    ),
+                    child: Image.asset(
+                        width: 25.w,
+                        fit: BoxFit.cover,
+                        height: 25.h,
+                        AppAssets.instance.imageErrorNews),
                   );
                 },
               ),

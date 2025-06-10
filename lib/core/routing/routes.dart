@@ -7,4 +7,6 @@ class Routes {
   static const String profile = '/profile';
   static const String buttonNavigationBetweenScreens =
       '/buttonNavigationBetweenScreens';
+  static const String trendingScreen = '/trendingScreen';
+  static const String theNewsTrending = '/theNewsTrending ';
 }

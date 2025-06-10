@@ -8,10 +8,10 @@ import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/theming/styles.dart';
 import 'package:news_app/core/widget/app_text_rich.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
-import 'package:news_app/features/sign_up/ui/widget/sign_up_email_and_password.dart';
-import 'package:news_app/features/sign_up/ui/widget/signup_bloc_listener.dart';
-import 'package:news_app/features/sign_up/ui/widget/signup_social_media.dart';
-import 'package:news_app/features/sign_up/ui/widget/signup_text_button.dart';
+import 'package:news_app/features/sign_up/presentation/widget/sign_up_email_and_password.dart';
+import 'package:news_app/features/sign_up/presentation/widget/signup_bloc_listener.dart';
+import 'package:news_app/features/sign_up/presentation/widget/signup_social_media.dart';
+import 'package:news_app/features/sign_up/presentation/widget/signup_text_button.dart';
 import 'package:news_app/generated/locale_keys.g.dart';
 import 'package:news_app/news_app.dart';
 

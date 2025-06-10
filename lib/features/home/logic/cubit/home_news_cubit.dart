@@ -8,7 +8,7 @@ import 'package:news_app/features/home/logic/cubit/home_news_state.dart';
 class HomeNewsCubit extends Cubit<HomeNewsState> {
   final HomeRepo _homeRepo;
   HomeNewsCubit(this._homeRepo) : super(HomeNewsInitial());
-  List<Articles> ccc = [];
+  List<Articles> listLatestLoading = [];
   String nameNews = "";
   getLatestNews({required String category}) async {
     // if (nameNews == category && ccc.isNotEmpty) {
@@ -21,7 +21,7 @@ class HomeNewsCubit extends Cubit<HomeNewsState> {
 
     if (response is Success<HomeResponseModel>) {
       //  if (isClosed) return;
-      ccc = response.data.articles!;
+      listLatestLoading = response.data.articles!;
       nameNews = category;
       emit(HomeNewsSuccess(listNews: response.data.articles!));
     } else if (response is Failure<HomeResponseModel>) {
@@ -32,16 +32,16 @@ class HomeNewsCubit extends Cubit<HomeNewsState> {
   }
 
   getLatestSports() async {
-    if (isClosed) return;
+    // if (isClosed) return;
     emit(HomeNewsLoading());
     final response = await _homeRepo.getLatestNews(category: "Sports");
 
     if (response is Success<HomeResponseModel>) {
-      if (isClosed) return;
-      ccc = response.data.articles!;
-      emit(HomeNewsSuccess(listNews: ccc));
+      // if (isClosed) return;
+      listLatestLoading = response.data.articles!;
+      emit(HomeNewsSuccess(listNews: listLatestLoading));
     } else if (response is Failure<HomeResponseModel>) {
-      if (isClosed) return;
+      // if (isClosed) return;
       emit(HomeNewsFailure(
           message: ApiErorrModel(message: response.error.message.toString())));
     }

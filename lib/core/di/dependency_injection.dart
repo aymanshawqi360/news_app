@@ -6,12 +6,16 @@ import 'package:news_app/features/home/data/api/home_api_service.dart';
 import 'package:news_app/features/home/data/repo/home_repo.dart';
 import 'package:news_app/features/home/logic/cubit/cubit_trending/home_trending_cubit.dart';
 import 'package:news_app/features/home/logic/cubit/home_news_cubit.dart';
+import 'package:news_app/features/home/presentation/widget/trending/trending.dart';
 import 'package:news_app/features/login/data/firebase/login_firebase_servies.dart';
 import 'package:news_app/features/login/data/repo/login_firebase_repo.dart';
 import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/sign_up/data/firebase/signup_firebase_service.dart';
 import 'package:news_app/features/sign_up/data/repo/signup_firebase_repo.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
+import 'package:news_app/features/trending/data/api/trending_api_service.dart';
+import 'package:news_app/features/trending/data/repo/trending_repo.dart';
+import 'package:news_app/features/trending/logic/cubit/trending_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -45,4 +49,10 @@ void setupGetIt() {
 //Home//Trending
 
   getIt.registerFactory<HomeTrendingCubit>(() => HomeTrendingCubit(getIt()));
+
+//TrendingScreen
+  getIt
+      .registerLazySingleton<TrendingApiService>(() => TrendingApiService(dio));
+  getIt.registerLazySingleton<TrendingRepo>(() => TrendingRepo(getIt()));
+  getIt.registerFactory<TrendingCubit>(() => TrendingCubit(getIt()));
 }

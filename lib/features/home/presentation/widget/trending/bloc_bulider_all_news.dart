@@ -6,6 +6,7 @@ import 'package:news_app/features/home/logic/cubit/cubit_trending/home_trending_
 import 'package:news_app/features/home/logic/cubit/cubit_trending/home_trending_state.dart';
 import 'package:news_app/features/home/presentation/widget/trending/trending.dart';
 import 'package:news_app/features/home/presentation/widget/trending/trending_shimmer_loading.dart';
+import 'package:news_app/features/trending/presentation/widget/list_view_trending_shimmer_loading.dart';
 
 class BlocBuliderAllNews extends StatefulWidget {
   const BlocBuliderAllNews({super.key});
@@ -27,7 +28,7 @@ class _BlocBuliderAllNewsState extends State<BlocBuliderAllNews> {
       listener: (context, state) {
         if (state is HomeAllDataFailure) {
           //   setupErrorState(context, state.message.message.toString());
-          //   _textShowDialog(context, error: state.message.message.toString());
+          _textShowDialog(context, error: state.message.message.toString());
         }
       },
       buildWhen: (previous, current) =>

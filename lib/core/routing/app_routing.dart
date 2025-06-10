@@ -10,7 +10,8 @@ import 'package:news_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:news_app/features/login/ui/login_screen.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
 import 'package:news_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
-import 'package:news_app/features/sign_up/ui/sign_up_screen.dart';
+import 'package:news_app/features/sign_up/presentation/sign_up_screen.dart';
+import 'package:news_app/features/trending/presentation/trending_screen.dart';
 
 class AppRouting {
   Route? generateRoute(RouteSettings settings) {
@@ -34,6 +35,10 @@ class AppRouting {
       case Routes.buttonNavigationBetweenScreens:
         return MaterialPageRoute(builder: (_) {
           return const ButtonNavigationBetweenScreens();
+        });
+      case Routes.trendingScreen:
+        return MaterialPageRoute(builder: (_) {
+          return const TrendingScreen();
         });
 
       default:

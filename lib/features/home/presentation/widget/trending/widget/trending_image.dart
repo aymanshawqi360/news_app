@@ -18,7 +18,7 @@ class TrendingImage extends StatelessWidget {
           width: 364.w,
           height: 183.h,
           // fit: BoxFit.cover,
-          imageUrl: articlesModel.urlToImage!,
+          imageUrl: articlesModel.urlToImage ?? AppAssets.instance.navalShip,
           fit: BoxFit.cover,
           placeholder: (context, url) => Container(
               width: 364.w,
